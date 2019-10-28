@@ -1,46 +1,51 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>
+    <ion-title >
       I SABI
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 
-<ion-card class="login-form" class="px-lg-5 pt-0 mb-5">
+<ion-card class="login-form" class="px-lg-5 pt-0 m-0 mb-5">
 
   <ion-card-content>
       <ion-card-header>
           <ion-card-subtitle></ion-card-subtitle>
-          <ion-card-title class="font-weight-bold text-dark white-text text-center py-1"> 
+          <ion-card-title class="font-weight-bold  white-text text-center py-1"> 
             SIGN UP</ion-card-title>
         </ion-card-header>
 
     <form #loginForm ngform="loginForm" name="form" (submit)="register(loginForm)" class="text-center" >
       <ion-item>
-        <ion-input #number name="number" placeholder="Phone" [(ngModel)]="model.number"
+          <ion-label position="floating">Phone</ion-label>
+        <ion-input #number name="number" position="floating"  [(ngModel)]="model.number"
          type="number" required class=""  ngControl="title"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input #username name="username" placeholder="Username" [(ngModel)]="model.username"
+          <ion-label position="floating">Username</ion-label>
+        <ion-input #username name="username" position="floating" [(ngModel)]="model.username"
          type="text" required   ngControl="title"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input #password name="password" placeholder="Password" [(ngModel)]="model.password"
+          <ion-label position="floating">Password</ion-label>
+        <ion-input #password name="password" position="floating" [(ngModel)]="model.password"
          type="password" required   ngControl="title"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-input #con_password name="password" placeholder="Confirm password" [(ngModel)]="model.conf_password"
+          <ion-label position="floating">Confirm password</ion-label>
+        <ion-input #con_password name="password" position="floating" [(ngModel)]="model.conf_password"
          type="password" required   ngControl="title"></ion-input>
       </ion-item>
      
 <ion-button expand="full" type="submit" color="success">Submit</ion-button>      
     </form>
 
-    <p> I already have account <ion-chip class="font-weight-bold" [routerLink]="['/login']" > login</ion-chip></p>
+    <p class="text-white"> I already have account <ion-chip class="font-weight-bold text-white"
+       [routerLink]="['/login']" > login</ion-chip></p>
 
   </ion-card-content>
 </ion-card>

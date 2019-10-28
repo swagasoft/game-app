@@ -58,6 +58,10 @@ loading: any;
     this.router.navigate(['/register']);
   }
 
+  facebook(){
+    console.log('facebook login clicked');
+  }
+
 
 
 

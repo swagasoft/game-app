@@ -11,3 +11,19 @@ ion-icon {
       width: 200px;
       height: 50px;
   }
+
+
+  ion-card{
+    background-image: url("/../../assets/img/coming-soon.jpg");
+    height: 500px; /* You must set a specified height */
+    background-position: center; /* Center the image */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-size: cover; /* Resize the background image to cover the entire container */
+}
+.scroll-content{
+    align-content:center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}

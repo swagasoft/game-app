@@ -1,2 +1,38 @@
-<app-menu></app-menu>
+<ion-menu side="start">
+    <ion-header>
+      <ion-toolbar translucent>
+        <ion-title>Menu</ion-title>
 
+        <ion-thumbnail slot="start">
+          </ion-thumbnail>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <app-menu></app-menu>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" main>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="ion-padding">
+      <h6> menu indecator </h6>
+    </ion-content>
+  </div>
+
+<ion-menu-controller></ion-menu-controller>
+
+<script>
+  function openMenu() {
+    document.querySelector('ion-menu-controller')
+      .open();
+  }
+</script>
