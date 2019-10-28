@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      I SABI
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<div class="login-form" class="px-lg-5 pt-0 mb-5">
+
+    <ion-card-content>
+        <ion-card-header>
+            <ion-card-subtitle></ion-card-subtitle>
+            <ion-card-title class="font-weight-bold text-dark white-text text-center py-4"> 
+              LOGIN</ion-card-title>
+          </ion-card-header>
+  
+      <form #loginForm ngform="loginForm" name="form" (submit)="login(loginForm)" class="text-center" >
+        <ion-item>
+          <ion-input #number name="number" placeholder="Phone" [(ngModel)]="model.number"
+           type="number" required class=""  ngControl="title"></ion-input>
+        </ion-item>
+  
+        <ion-item>
+          <ion-input #password name="password" placeholder="Password" [(ngModel)]="model.password"
+           type="password" required   ngControl="title"></ion-input>
+        </ion-item>
+       
+  <ion-button expand="full" type="submit" color="success">Submit</ion-button>      
+      </form>
+  
+      <p> <ion-chip class="font-weight-bold" (click)="register()"> sign up</ion-chip> or continue with : </p>
+ 
+        
+     <ion-content class="mb-5 mt-5">
+       
+        <ion-fab horizontal="start" vertical="top" slot="fixed">
+            <ion-fab-button color="secondary">
+              <ion-icon name="arrow-dropright"></ion-icon>
+            </ion-fab-button>
+            <ion-fab-list side="end">
+              <ion-fab-button color="light">
+                <ion-icon name="logo-facebook"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-button color="light">
+                <ion-icon name="logo-twitter"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-button color="light">
+                <ion-icon name="logo-vimeo"></ion-icon>
+              </ion-fab-button>
+              <ion-fab-button color="light">
+                <ion-icon name="logo-google"></ion-icon>
+              </ion-fab-button>
+            </ion-fab-list>
+          </ion-fab>
+     </ion-content>
+   
+    </ion-card-content>
+  </div>
+
