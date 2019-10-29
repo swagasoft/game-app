@@ -1,3 +1,4 @@
+import { AdminUploadComponent } from './components/admin-upload/admin-upload.component';
 import { GameComponent } from './components/game/game.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AccountComponent } from './components/account/account.component';
@@ -11,7 +12,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
   {path : 'login', component: LoginComponent},
   {path : 'welcome', component: WelcomepageComponent, canActivate:[AuthguardGuard]},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path : 'game', component: GameComponent, canActivate:[AuthguardGuard]} ,
   {path : 'profile', component: ProfileComponent, canActivate:[AuthguardGuard]},
   {path : 'account', component: AccountComponent, canActivate:[AuthguardGuard]},
+  {path : 'admin-upload', component: AdminUploadComponent, canActivate:[AuthguardGuard]},
 ];
 
 @NgModule({

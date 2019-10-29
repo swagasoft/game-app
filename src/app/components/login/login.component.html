@@ -16,9 +16,10 @@
         <ion-item class="item">
             <ion-label position="floating">Phone</ion-label>
           <ion-input type="tel" inputmode="number" #number name="number" clearInput [(ngModel)]="model.number"
-            autocomplete="off"  minlength="11"  required="true" ></ion-input>
+            autocomplete="off"  minlength="11"  required="true" [pattern]="phoneRegex" ></ion-input>
            <div *ngIf="loginForm.submitted && number?.errors" class="bg-danger text-white text-center">
-              <small *ngIf="number?.errors.required" >email is required</small>
+              <small *ngIf="number?.errors.required" >Phone is required</small>
+              <small *ngIf="number?.errors.pattern" >Phone number is not valid</small>
               <small *ngIf="number?.errors.minlength" >phone must be up to 11 digit.</small>
             </div>
           </ion-item>

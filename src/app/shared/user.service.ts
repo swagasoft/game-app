@@ -22,6 +22,11 @@ AuthHeader = {headers: new HttpHeaders().set('Authorization',
     return this.http.post(environment.apiBaseUrl + '/register' , user, this.noAuthHeader);
   }
 
+  postQuestion(question){
+    console.log(question);
+    return this.http.post(environment.apiBaseUrl + '/post-question', question);
+  }
+
   login(credentials) {
     return this.http.post(environment.apiBaseUrl  + '/login',
      credentials, this.noAuthHeader);

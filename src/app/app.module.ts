@@ -1,3 +1,4 @@
+import { AdminUploadComponent } from './components/admin-upload/admin-upload.component';
 import { GameComponent } from './components/game/game.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { AccountComponent } from './components/account/account.component';
@@ -31,6 +32,7 @@ import { AuthInterceptor } from './auths/auth-interceptor';
   RegisterComponent,
   MenuComponent,
   SettingsComponent,
+  AdminUploadComponent,
   LeaderboardComponent,
   AccountComponent,
   ProfileComponent,

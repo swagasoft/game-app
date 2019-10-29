@@ -1,6 +1,7 @@
 import { UserService } from './../../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -9,7 +10,9 @@ import { Router } from '@angular/router';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService,
+              public alertController: AlertController,
+               private router: Router) { }
   model = {
     number: '',
     password: '',
@@ -26,11 +29,28 @@ export class RegisterComponent implements OnInit {
       },
       error => {
         console.log(error);
+        this.presentAlertConfirm(error.error);
       }
     );
   }
 
 
   ngOnInit() {}
+
+  async presentAlertConfirm(msg) {
+    const alert = await this.alertController.create({
+      header: 'Oooopps!',
+      message: ` <strong class="text-danger"> ${msg}</strong>`,
+      buttons: [ {
+          text: 'Try again',
+          handler: () => {
+            console.log('Confirm retry');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
 
 }
