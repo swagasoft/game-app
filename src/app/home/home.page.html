@@ -1,9 +1,61 @@
-<ion-content class="background">
-    <ion-card class="scroll-content m-0">
-   
-    </ion-card>
-<ion-button expand="block" (click)="login()" color="success"> TEST MODE <ion-icon size="large" name="arrow-round-forward"></ion-icon></ion-button>
+
+  <ion-content>
+
+      <ion-card class="text-center">
+          <div class="col d-flex justify-content-center affix">
+          <h1> 
+                <ion-img class="rounded-top display-flex justify-content-center" 
+                src="../../../assets/icon/Logoicon.png"></ion-img></h1> 
+            </div>
+             
+          <div id="clockdiv"> 
+            <div> 
+              <span class="days" id="day"></span> 
+              <div class="smalltext">Days</div> 
+            </div> 
+            <div> 
+              <span class="hours" id="hour"></span> 
+              <div class="smalltext">Hours</div> 
+            </div> 
+            <div> 
+              <span class="minutes" id="minute"></span> 
+              <div class="smalltext">Minutes</div> 
+            </div> 
+            <div> 
+              <span class="seconds" id="second"></span> 
+              <div class="smalltext">Seconds</div> 
+            </div> 
+          </div> 
+            
+          <p id="demo"></p> 
+      </ion-card>
+      <ion-text >
+          <h6 class="text-center font-weight-bold grey-text"> We are Here to Encourage <br>
+          Learning and Reward hard Work</h6>
+        </ion-text>
+      <ion-text color="success" >
+          <h3 class="text-center font-weight-bold p-1 "> COMING LIVE</h3>
+        </ion-text>
+        
+        <ion-card>
+            <ion-item>
+                <ion-label position="floating">example@mail.com</ion-label>
+                <ion-input></ion-input>
+                 <ion-label color="success" (click)="submitEmail()">  send
+                  </ion-label>
+              </ion-item>
+        </ion-card>
+
+
+      <ion-card class="scroll-content m-0 mb-5 pb-5">
+          <ion-button expand="full" size="large" shape="round" (click)="login()" color="success"> TEST MODE
+              <ion-icon size="small" class="ml-3" name="arrow-round-forward"></ion-icon></ion-button>
+      </ion-card>
   </ion-content>
+  
+    
+
+
 
 
 <!-- <ion-button expand="full">Full Button</ion-button> -->

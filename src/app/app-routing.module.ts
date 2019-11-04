@@ -1,3 +1,6 @@
+import { AdminAccountComponent } from './components/admin-account/admin-account.component';
+import { PayoutsComponent } from './components/payouts/payouts.component';
+import { ManageUsersComponent } from './components/manage-users/manage-users.component';
 import { AdminUploadComponent } from './components/admin-upload/admin-upload.component';
 import { GameComponent } from './components/game/game.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -10,6 +13,7 @@ import { WelcomepageComponent } from './components/welcomepage/welcomepage.compo
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/router';
+import { ManageQuestionsComponent } from './components/manage-questions/manage-questions.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
@@ -24,6 +28,10 @@ const routes: Routes = [
   {path : 'profile', component: ProfileComponent, canActivate:[AuthguardGuard]},
   {path : 'account', component: AccountComponent, canActivate:[AuthguardGuard]},
   {path : 'admin-upload', component: AdminUploadComponent, canActivate:[AuthguardGuard]},
+  {path : 'manage-users', component: ManageUsersComponent, canActivate:[AuthguardGuard]},
+  {path : 'payouts', component: PayoutsComponent, canActivate:[AuthguardGuard]},
+  {path : 'manage-questions', component: ManageQuestionsComponent, canActivate:[AuthguardGuard]},
+  {path : 'admin-account', component: AdminAccountComponent, canActivate:[AuthguardGuard]},
 ];
 
 @NgModule({

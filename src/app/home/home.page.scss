@@ -13,17 +13,49 @@ ion-icon {
   }
 
 
-  ion-card{
-    background-image: url("/../../assets/img/coming-soon.jpg");
-    height: 500px; /* You must set a specified height */
-    background-position: center; /* Center the image */
-    background-repeat: no-repeat; /* Do not repeat the image */
-    background-size: cover; /* Resize the background image to cover the entire container */
-}
+//   ion-card{
+//     background-image: url("/../../assets/img/bg.png");
+//     height: 500px; 
+//     background-position: center; 
+//     background-repeat: no-repeat; 
+//     background-size: cover; 
+// }
 .scroll-content{
     align-content:center;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     justify-content: center;
     text-align: center;
 }
+
+// timer styles
+h1{ 
+    color: #396; 
+    font-weight: 100; 
+    font-size: 40px; 
+    margin: 40px 0px 20px; 
+  } 
+   #clockdiv{ 
+      font-family: sans-serif; 
+      color: rgb(14, 10, 10); 
+      display: inline-block; 
+      font-weight: bold; 
+      text-align: center; 
+      font-size: 34px; 
+  } 
+  #clockdiv > div{ 
+      padding: 10px; 
+      border-radius: 3px; 
+      background: rgb(202, 226, 221); 
+      display: inline-block; 
+  } 
+  #clockdiv div > span{ 
+      padding: 15px; 
+      border-radius: 3px; 
+    //   background: #00816A; 
+      display: inline-block; 
+  } 
+  .smalltext{ 
+      padding-top: 5px; 
+      font-size: 16px; 
+  } 

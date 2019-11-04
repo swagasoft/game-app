@@ -23,13 +23,36 @@ AuthHeader = {headers: new HttpHeaders().set('Authorization',
   }
 
   postQuestion(question){
-    console.log(question);
     return this.http.post(environment.apiBaseUrl + '/post-question', question);
+  }
+
+  getAllQuestions(){
+    return this.http.get(environment.apiBaseUrl + '/get-all-questions');
   }
 
   login(credentials) {
     return this.http.post(environment.apiBaseUrl  + '/login',
      credentials, this.noAuthHeader);
+  }
+
+  // Random tips on Random
+  getRandomTips(){
+    return this.http.get(environment.apiBaseUrl + '/get-random-tip');
+  }
+
+  findByCategory(category){
+    return this.http.get(environment.apiBaseUrl + `/find-by-category${category}`, );
+  }
+
+  changeQuestionStatusToFalse(id){
+    return this.http.get(environment.apiBaseUrl + `/change-to-false${id}`);
+  }
+  changeQuestionStatusToTrue(id){
+    return this.http.get(environment.apiBaseUrl + `/change-to-true${id}`);
+  }
+
+  getSingleQuestion(id){
+    return this.http.get(environment.apiBaseUrl + `/get-single-question${id}`);
   }
 
   getUserRole(){
@@ -48,12 +71,11 @@ AuthHeader = {headers: new HttpHeaders().set('Authorization',
    this.token = localStorage.getItem('token');
    return this.token;
    }
+
  
    getUserPayload() {
-     console.log('inside user payload');
      const token = this.getToken();
      if (token) {
-       console.log('this is token',token);
        const userPayload = atob(token.split('.')[1]);
        return JSON.parse(userPayload);
      } else {
@@ -64,8 +86,6 @@ AuthHeader = {headers: new HttpHeaders().set('Authorization',
    isLogedIn() {
      const userPayload = this.getUserPayload();
      if (userPayload) {
-     console.log('USER IS LOGGED IN');
-       console.log(userPayload);
      return userPayload.exp > Date.now() / 1000;
      } else {
      return false;

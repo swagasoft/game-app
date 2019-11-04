@@ -9,7 +9,7 @@
   </ion-header>
   <ion-content>
     <ion-list>
-      <app-menu></app-menu>
+      <app-admin-menu></app-admin-menu>
     </ion-list>
   </ion-content>
 </ion-menu>
@@ -39,12 +39,13 @@
         <ion-select-option value="science">Science</ion-select-option>
         <ion-select-option value="history">History</ion-select-option>
         <ion-select-option value="politics">Politics</ion-select-option>
-        <ion-select-option value="art">Art</ion-select-option>
+        <ion-select-option value="arts">Art</ion-select-option>
         <ion-select-option value="tourism">Tourism</ion-select-option>
       </ion-select>
+
+      
     </ion-item>
    </ion-card>
-
     <form #questionForm="ngForm" (submit)="submit(questionForm)"  >
     <ion-card>
   <ion-item>

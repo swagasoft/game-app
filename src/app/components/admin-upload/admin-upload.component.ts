@@ -1,7 +1,7 @@
 import { UserService } from './../../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-admin-upload',
@@ -13,7 +13,8 @@ export class AdminUploadComponent implements OnInit {
 
   
   constructor(private userService: UserService,
-    public alertController: AlertController) { }
+              public toastController: ToastController,
+              public alertController: AlertController) { }
 
   questionModel = {
     question: '',
@@ -49,12 +50,12 @@ export class AdminUploadComponent implements OnInit {
         response => {
           console.log(response);
           this.resetForm();
-          let info = response['message'];
-          this.presentSuccess(info);
+          this.presentToast();
         },
         err => {
           console.log(err);
-          this.presentFail(err.error);
+          console.log(err.error.message);
+          this.presentFail(err.error.message);
         }
       );
 
@@ -74,20 +75,6 @@ export class AdminUploadComponent implements OnInit {
         this.questionModel.tip = '';
       }
 
-      async presentSuccess(msg) {
-        const alert = await this.alertController.create({
-          header: 'SUCCESS!',
-          message: ` <strong class="font-weight-bold text-success text-center"> ${msg}</strong>`,
-          buttons: [ {
-              text: 'Okay',
-              handler: () => {
-                console.log('Confirm Okay');
-              }
-            }
-          ]
-        });
-        await alert.present();
-      }
       async presentFail(msg) {
         const alert = await this.alertController.create({
           header: 'Ooops!',
@@ -101,6 +88,15 @@ export class AdminUploadComponent implements OnInit {
           ]
         });
         await alert.present();
+      }
+
+      async presentToast() {
+        const toast = await this.toastController.create({
+          message: 'Question have been saved.',
+          duration: 2000,
+          position:"middle"
+        });
+        toast.present();
       }
 
 }

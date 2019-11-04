@@ -1,3 +1,8 @@
+import { AdminAccountComponent } from './components/admin-account/admin-account.component';
+import { PayoutsComponent } from './components/payouts/payouts.component';
+import { ManageUsersComponent } from './components/manage-users/manage-users.component';
+import { AdminMenuComponent } from './components/admin-menu/admin-menu.component';
+import { NativeAudio } from '@ionic-native/native-audio/ngx';
 import { AdminUploadComponent } from './components/admin-upload/admin-upload.component';
 import { GameComponent } from './components/game/game.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -24,6 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { NO_ERRORS_SCHEMA } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './auths/auth-interceptor';
+import { ManageQuestionsComponent } from './components/manage-questions/manage-questions.component';
 
 
 @NgModule({
@@ -31,10 +37,16 @@ import { AuthInterceptor } from './auths/auth-interceptor';
   LoginComponent,
   RegisterComponent,
   MenuComponent,
+  AdminMenuComponent,
+  ManageUsersComponent,
+
   SettingsComponent,
   AdminUploadComponent,
   LeaderboardComponent,
   AccountComponent,
+  PayoutsComponent,
+  ManageQuestionsComponent,
+  AdminAccountComponent,
   ProfileComponent,
   GameComponent,
   WelcomepageComponent],
@@ -52,6 +64,7 @@ import { AuthInterceptor } from './auths/auth-interceptor';
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     StatusBar,
     UserService,
+    NativeAudio,
     SplashScreen,
     AuthguardGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }

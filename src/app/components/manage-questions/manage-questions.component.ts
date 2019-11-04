@@ -1,0 +1,129 @@
+import { UserService } from './../../shared/user.service';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
+
+@Component({
+  selector: 'app-manage-questions',
+  templateUrl: './manage-questions.component.html',
+  styleUrls: ['./manage-questions.component.scss'],
+})
+export class ManageQuestionsComponent implements OnInit {
+questionsOutPut: any;
+catType: any;
+loading: boolean;
+showForm: boolean;
+showContent: boolean;
+questionToEdit: any;
+
+
+  constructor(private userService: UserService, private router: Router) { }
+
+  questionModel = {
+    question: '',
+    option1: '',
+    category: '',
+    option2: '',
+    option3: '',
+    option4: '',
+      tip  : '',
+    answer: ''
+  }
+
+
+
+  model = {
+    filterOptions : [
+    ]
+  }
+
+  ngOnInit() {
+    this.loading = false;
+    this.showContent = true;
+    this.showForm = false;
+    this.questionsOutPut = 0;
+    this.getAllQuestions();
+  }
+
+ 
+
+
+  selectChange( $event) {
+  this.findByCategory($event);
+      }
+
+
+  getAllQuestions(){
+    this.loading = true;
+    this.userService.getAllQuestions().subscribe(
+      res => {
+        this.loading = false;
+        console.log(res);
+        this.questionsOutPut = res['quesions'];
+      },
+      err => {
+        this.loading = false;
+        console.log(err);
+
+      }
+    );
+  }
+
+  findByCategory(category){
+    this.loading = true;
+    console.log(category);
+    // console.log(this.catType);
+    this.userService.findByCategory(category).subscribe(
+      res => {
+        this.loading = false;
+        this.questionsOutPut = res['questions'];
+        console.log(this.questionsOutPut);
+      },
+      err => {
+        this.loading = false;
+        console.log(err);
+      }
+    );
+
+  }
+  addQuestion(){
+    this.router.navigate(['/admin-upload']);
+  }
+
+  changeStatusTrue(id){
+    this.userService.changeQuestionStatusToTrue(id).subscribe(
+      res => { this.getAllQuestions(); } );
+  }
+
+  editQuestion(id){
+    this.showContent = false;
+    this.showForm = true;
+    this.loading = true;
+    console.log('edit question', id);
+    this.userService.getSingleQuestion(id).subscribe(
+      res => {
+        this.loading = false;
+        this.questionToEdit = res['doc'];
+        console.log(this.questionToEdit);
+
+      },
+      err => {
+        this.loading = false;
+        console.log(err);
+      }
+    );
+  }
+
+  changeStatusFalse(id){
+    console.log('change status to false..');
+    this.userService.changeQuestionStatusToFalse(id).subscribe(
+      res => { this.getAllQuestions(); });
+  }
+
+  updateQuestion(form: NgForm){
+    this.showForm = false;
+    this.showContent = true;
+    console.log(form.value);
+
+  }
+}

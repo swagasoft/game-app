@@ -1,0 +1,26 @@
+
+        <ion-item [routerLink]="['/welcome']" routerLinkActive="router-link-active" >
+          <ion-icon name="home" slot="start"></ion-icon>
+          <ion-label >HOME</ion-label>
+        </ion-item>
+        <ion-item [routerLink]="['/manage-users']" routerLinkActive="router-link-active" >
+          <ion-icon name="person" slot="start"></ion-icon>
+          <ion-label>MANAGE USER</ion-label>
+        </ion-item>
+        <ion-item [routerLink]="['/manage-questions']" routerLinkActive="router-link-active" >
+          <ion-icon name="help" slot="start"></ion-icon>
+          <ion-label>MANAGE QUESTIONS</ion-label>
+        </ion-item>
+       
+        <ion-item [routerLink]="['/payouts']" routerLinkActive="router-link-active" >
+          <ion-icon name="logo-game-controller-b" slot="start"></ion-icon> 
+          <ion-label class="label">PAYOUTS</ion-label>
+        </ion-item>
+        <ion-item [routerLink]="['/admin-account']" routerLinkActive="router-link-active" >
+          <ion-icon name="apps" slot="start"></ion-icon>
+          <ion-label> ACCOUNT</ion-label>
+        </ion-item> 
+        <ion-item (click)="logout()" >
+          <ion-icon name="log-out" slot="start"></ion-icon>
+          <ion-label>LOGOUT</ion-label>
+        </ion-item>
