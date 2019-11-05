@@ -59,10 +59,10 @@
           <ion-card  *ngFor="let item of questionsOutPut">
             <div class="row display-flex justify-content-center">
                 <ion-checkbox *ngIf="item.status" color="primary" [checked]="item.status"
-                 (click)="changeStatusFalse(item._id)" ></ion-checkbox>
+                 (click)="changeStatusFalse(item._id, item.category)" ></ion-checkbox>
       
                 <ion-checkbox *ngIf="!item.status" color="primary" [checked]="item.status"
-                 (click)="changeStatusTrue(item._id)" ></ion-checkbox>
+                 (click)="changeStatusTrue(item._id, item.category)" ></ion-checkbox>
             <ion-card-header class="text-left"> Display : {{item.status}}  </ion-card-header>
             <ion-card-header class="text-right"> Category : {{item.category}}  </ion-card-header>
             </div>
@@ -81,12 +81,15 @@
             <ion-card-content>
               <strong> option-4 :</strong> {{item.option4}}
             </ion-card-content>
+            <ion-card-content>
+              <strong >Answer</strong> {{item.answer}}
+            </ion-card-content>
             <div class="row d-flex">
             <ion-card-content class="col">
-              <strong class="justify-content-left text-success">Answer</strong> {{item.answer}}
+                <ion-icon name="create" (click)="editQuestion(item._id)"  size="large" color="primary"></ion-icon>
             </ion-card-content>
             <ion-card-content class="col">
-                <ion-icon name="create" (click)="editQuestion(item._id)"  size="large" color="danger"></ion-icon>
+                <ion-icon name="trash" (click)="deleteQestion(item._id, item.category)"  size="large" color="danger"></ion-icon>
             </ion-card-content>
           </div>
           </ion-card>
@@ -102,7 +105,7 @@
     <!-- edit question form -->
    <div *ngIf="showForm"> 
       <h6 class="text-center">Edit question</h6>     
-      <form class="mb-5" #questionForm="ngForm" (submit)="updateQuestion(questionForm)">
+      <form class="mb-5" #questionForm="ngForm" (submit)="updateQuestion(questionForm, questionToEdit._id)">
       <ion-card>
     <ion-item>
       <ion-label>Question</ion-label>

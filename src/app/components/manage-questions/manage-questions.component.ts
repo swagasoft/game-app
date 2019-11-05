@@ -2,6 +2,7 @@ import { UserService } from './../../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-manage-questions',
@@ -17,7 +18,8 @@ showContent: boolean;
 questionToEdit: any;
 
 
-  constructor(private userService: UserService, private router: Router) { }
+  constructor(private userService: UserService,public alertController: AlertController,
+              private router: Router) { }
 
   questionModel = {
     question: '',
@@ -69,6 +71,48 @@ questionToEdit: any;
     );
   }
 
+  deleteQestion(id, category) {
+  this.presentAlertConfirm(id, category);
+  }
+
+
+  
+  async presentAlertConfirm(id, category) {
+    const alert = await this.alertController.create({
+      header: 'DELETE QUESTION ?',
+      message: ' <strong class="text-danger"> Deleted question cannot be recovered</strong>!!!',
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          cssClass: 'secondary',
+          handler: (blah) => {
+            console.log('cancle delete');
+          }
+        }, {
+          text: 'Yes',
+          cssClass: 'danger',
+          handler: () => {
+            this.loading = true;
+            this.userService.deleteQuestion(id).subscribe(
+              res => {
+                this.loading = false;
+                console.log('response .. success delete');
+                this.findByCategory(category);
+              },
+              err => {
+                this.loading = false;
+                this.findByCategory(category);
+              }
+            );
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+
   findByCategory(category){
     this.loading = true;
     console.log(category);
@@ -78,6 +122,7 @@ questionToEdit: any;
         this.loading = false;
         this.questionsOutPut = res['questions'];
         console.log(this.questionsOutPut);
+
       },
       err => {
         this.loading = false;
@@ -90,10 +135,20 @@ questionToEdit: any;
     this.router.navigate(['/admin-upload']);
   }
 
-  changeStatusTrue(id){
+  changeStatusTrue(id, category){
+    console.log('I CLICK TRUE', category);
     this.userService.changeQuestionStatusToTrue(id).subscribe(
-      res => { this.getAllQuestions(); } );
+      res => { this.findByCategory(category); 
+      } );
   }
+
+  changeStatusFalse(id, category){
+    console.log('I CLICK false');
+    this.userService.changeQuestionStatusToFalse(id).subscribe(
+      res => {
+        this.findByCategory(category) });
+  }
+
 
   editQuestion(id){
     this.showContent = false;
@@ -114,16 +169,15 @@ questionToEdit: any;
     );
   }
 
-  changeStatusFalse(id){
-    console.log('change status to false..');
-    this.userService.changeQuestionStatusToFalse(id).subscribe(
-      res => { this.getAllQuestions(); });
-  }
+ 
 
-  updateQuestion(form: NgForm){
+  updateQuestion(form: NgForm, id){
+    console.log(id);
     this.showForm = false;
     this.showContent = true;
     console.log(form.value);
+
+    console.log(this.questionModel);
 
   }
 }

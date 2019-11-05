@@ -1,3 +1,8 @@
+import { ContactComponent } from './components/contact/contact.component';
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { AdminAccountComponent } from './components/admin-account/admin-account.component';
 import { PayoutsComponent } from './components/payouts/payouts.component';
 import { ManageUsersComponent } from './components/manage-users/manage-users.component';
@@ -39,7 +44,8 @@ import { ManageQuestionsComponent } from './components/manage-questions/manage-q
   MenuComponent,
   AdminMenuComponent,
   ManageUsersComponent,
-
+  FaqComponent,
+  HowItWorksComponent,
   SettingsComponent,
   AdminUploadComponent,
   LeaderboardComponent,
@@ -47,6 +53,9 @@ import { ManageQuestionsComponent } from './components/manage-questions/manage-q
   PayoutsComponent,
   ManageQuestionsComponent,
   AdminAccountComponent,
+  FooterComponent,
+  ContactComponent,
+  PrivacyComponent,
   ProfileComponent,
   GameComponent,
   WelcomepageComponent],

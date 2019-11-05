@@ -28,7 +28,7 @@
      <ion-card class="text-center">
         <div class="col d-flex justify-content-center affix">
         <h1> 
-              <ion-img class="rounded-top display-flex justify-content-center" 
+              <ion-img class="image-top display-flex justify-content-center" 
               src="../../../assets/img/reading_icon.png"></ion-img>
             </h1> 
           </div>
@@ -58,7 +58,7 @@
           
     </ion-card>
     <div class="col d-flex justify-content-center affix">
-        <ion-button size="small" color="success">strart</ion-button>
+        <ion-button (click)="login()" color="success">start</ion-button>
     </div>
 
     <ion-card  class="green darken-2 "  rows="6" cols="20">
@@ -69,6 +69,7 @@
     </ion-card>
       
       <!-- end page content -->
+      <app-footer></app-footer>
     </ion-content>
   </div>
 

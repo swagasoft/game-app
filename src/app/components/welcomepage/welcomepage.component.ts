@@ -1,6 +1,7 @@
 import { UserService } from './../../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-welcomepage',
@@ -15,7 +16,8 @@ export class WelcomepageComponent implements OnInit {
   randomTip: any;
 
 
-  constructor(private userService: UserService, private menu: MenuController) { }
+  constructor(private userService: UserService,
+    private router: Router, private menu: MenuController) { }
 
   ngOnInit() {
     this.appTimer();
@@ -25,6 +27,9 @@ export class WelcomepageComponent implements OnInit {
 
   logout(){
     this.userService.logout();
+  }
+  login(){
+    this.router.navigate(['/game']);
   }
   // timer
   appTimer() {

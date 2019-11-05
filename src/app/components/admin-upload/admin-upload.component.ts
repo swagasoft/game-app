@@ -92,8 +92,8 @@ export class AdminUploadComponent implements OnInit {
 
       async presentToast() {
         const toast = await this.toastController.create({
-          message: 'Question have been saved.',
-          duration: 2000,
+          message: 'Submitted successfully...',
+          duration: 3000,
           position:"middle"
         });
         toast.present();

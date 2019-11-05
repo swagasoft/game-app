@@ -39,21 +39,30 @@ AuthHeader = {headers: new HttpHeaders().set('Authorization',
   getRandomTips(){
     return this.http.get(environment.apiBaseUrl + '/get-random-tip');
   }
-
   findByCategory(category){
     return this.http.get(environment.apiBaseUrl + `/find-by-category${category}`, );
   }
-
   changeQuestionStatusToFalse(id){
     return this.http.get(environment.apiBaseUrl + `/change-to-false${id}`);
   }
   changeQuestionStatusToTrue(id){
     return this.http.get(environment.apiBaseUrl + `/change-to-true${id}`);
   }
-
   getSingleQuestion(id){
     return this.http.get(environment.apiBaseUrl + `/get-single-question${id}`);
   }
+
+  upDateQuestion(question){
+    return this.http.get(environment.apiBaseUrl + `/update-question`)
+  }
+  deleteQuestion(id){
+    console.log(id);
+    return this.http.get(environment.apiBaseUrl + `/delete-question${id}`);
+  }
+
+
+
+
 
   getUserRole(){
     return localStorage.getItem('user-role');

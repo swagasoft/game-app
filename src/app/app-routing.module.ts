@@ -1,3 +1,7 @@
+import { PrivacyComponent } from './components/privacy/privacy.component';
+import { FaqComponent } from './components/faq/faq.component';
+import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
+import { ContactComponent } from './components/contact/contact.component';
 import { AdminAccountComponent } from './components/admin-account/admin-account.component';
 import { PayoutsComponent } from './components/payouts/payouts.component';
 import { ManageUsersComponent } from './components/manage-users/manage-users.component';
@@ -27,6 +31,12 @@ const routes: Routes = [
   {path : 'game', component: GameComponent, canActivate:[AuthguardGuard]} ,
   {path : 'profile', component: ProfileComponent, canActivate:[AuthguardGuard]},
   {path : 'account', component: AccountComponent, canActivate:[AuthguardGuard]},
+  {path : 'contact-us', component: ContactComponent, canActivate:[AuthguardGuard]},
+  {path : 'how-it-works', component: HowItWorksComponent, canActivate:[AuthguardGuard]},
+  {path : 'faq-section', component: FaqComponent, canActivate:[AuthguardGuard]},
+  {path : 'privacy-section', component: PrivacyComponent, canActivate:[AuthguardGuard]},
+
+  // admin routes
   {path : 'admin-upload', component: AdminUploadComponent, canActivate:[AuthguardGuard]},
   {path : 'manage-users', component: ManageUsersComponent, canActivate:[AuthguardGuard]},
   {path : 'payouts', component: PayoutsComponent, canActivate:[AuthguardGuard]},
