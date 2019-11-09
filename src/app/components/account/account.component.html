@@ -1,1 +1,86 @@
-<app-menu></app-menu>
+<ion-menu side="start">
+    <ion-header>
+      <ion-toolbar translucent class="pt-1">
+        <ion-title>{{appUsername}} </ion-title>
+
+        <ion-thumbnail slot="start">
+          </ion-thumbnail>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <app-menu></app-menu>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" main>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start" class="p-1">
+          <ion-menu-button color="success"></ion-menu-button>
+        </ion-buttons>
+        <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="content ion-padding m-0">
+      <!-- content area -->
+         <div>
+             <ion-card class="text-center">
+                 <ion-card-header class="font-weight-bold text-white grey darken-2"> PAYMENT</ion-card-header>
+                 <ion-card-content>
+                     <div class="col p-5 d-flex justify-content-center">
+                     <ion-img class="wallet" src="../../../assets/icon/wallet_icon.png"></ion-img>
+                     </div>
+                     <h1 class="text-center fint-weight-bold"> CREDIT : ₦  
+                       {{balance| number}} </h1>
+                     <!-- <ion-button color="success">DEBIT CARD</ion-button> -->
+                      <ion-item class="text-left">
+                        <ion-label position="floating">enter amount here</ion-label>
+                        <ion-input #amount name="amount" [(ngModel)]="amountInput"></ion-input>
+                      </ion-item>
+                     <!-- pay stack -->
+                     <ion-button color="success" (click)="payNow()"
+                     angular4-paystack
+                     [key]="'pk_test_8a53afd46deb1b7d9e646cfabc06e692f8f7de7b'"
+                     [email]="'ayaweisoft@gmail.com'"
+                     [amount]="amountInput"
+                     [ref]="reference"
+                     [channels]="['bank']"
+                     [class]="'btn btn-primary'"
+                     (close)="paymentCancel()"
+                     (callback)="paymentDone($event)"
+                   >
+                     DEBIT CARD
+                     </ion-button>
+                     <!--end of  pay stack -->
+                 </ion-card-content>
+             </ion-card>
+         </div>
+         
+         <div>
+             <ion-card class="text-center">
+                 <ion-card-header class="font-weight-bold text-white grey darken-2"> ACCOUNT</ion-card-header>
+                 <ion-card-content>
+                     <div class="col p-5 d-flex justify-content-center">
+                     <ion-img class="wallet" src="../../../assets/icon/profile_icon.png"></ion-img>
+                     </div>
+                     <h1 class="text-center fint-weight-bold"> UPDATE YOUR INFORMATION</h1>
+                     <ion-button color="success" (click)="profileSection()" >UPDATE</ion-button>
+                 </ion-card-content>
+             </ion-card>
+         </div>
+      <!-- end content area -->
+    </ion-content>
+    <app-footer></app-footer>
+
+  </div>
+
+<ion-menu-controller></ion-menu-controller>
+
+<script>
+  function openMenu() {
+    document.querySelector('ion-menu-controller')
+      .open();
+  }
+</script>

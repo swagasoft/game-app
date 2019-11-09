@@ -23,8 +23,7 @@ export class RegisterComponent implements OnInit {
   register(){
     this.userService.registerUser( this.model).subscribe( 
       response => {
-        console.log(response);
-        
+    this.presentSuccess();        
         
       },
       error => {
@@ -45,6 +44,21 @@ export class RegisterComponent implements OnInit {
           text: 'Try again',
           handler: () => {
             console.log('Confirm retry');
+          }
+        }
+      ]
+    });
+
+    await alert.present();
+  }
+  async presentSuccess() {
+    const alert = await this.alertController.create({
+      header: 'SUCCESS!',
+      message: ` <strong class="text-center font-weight-bold">  </strong>`,
+      buttons: [ {
+          text: 'continue to login',
+          handler: () => {
+           this.router.navigate(['/login']);
           }
         }
       ]

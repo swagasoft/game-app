@@ -1,3 +1,4 @@
+import { StartGameComponent } from './components/start-game/start-game.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { FaqComponent } from './components/faq/faq.component';
 import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
@@ -31,10 +32,12 @@ const routes: Routes = [
   {path : 'game', component: GameComponent, canActivate:[AuthguardGuard]} ,
   {path : 'profile', component: ProfileComponent, canActivate:[AuthguardGuard]},
   {path : 'account', component: AccountComponent, canActivate:[AuthguardGuard]},
-  {path : 'contact-us', component: ContactComponent, canActivate:[AuthguardGuard]},
-  {path : 'how-it-works', component: HowItWorksComponent, canActivate:[AuthguardGuard]},
-  {path : 'faq-section', component: FaqComponent, canActivate:[AuthguardGuard]},
-  {path : 'privacy-section', component: PrivacyComponent, canActivate:[AuthguardGuard]},
+  {path : 'start-game', component: StartGameComponent, canActivate:[AuthguardGuard]},
+
+  {path : 'contact-us', component: ContactComponent},
+  {path : 'how-it-works', component: HowItWorksComponent},
+  {path : 'faq-section', component: FaqComponent},
+  {path : 'privacy-section', component: PrivacyComponent},
 
   // admin routes
   {path : 'admin-upload', component: AdminUploadComponent, canActivate:[AuthguardGuard]},

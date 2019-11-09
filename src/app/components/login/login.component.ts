@@ -33,10 +33,11 @@ loading: any;
 
   async login(form: any) {
     this.userService.login(this.model).subscribe(response => {
-      console.log( 'LOGIN', response);
-      console.log('login success');
       this.userService.setToken(response['token']);
-      this.router.navigate(['/welcome']);
+      this.userService.loadBalance();
+      localStorage.setItem('appUsername',response['doc']['username']);
+      
+      this.router.navigate(['/game']);
    
         
     }, error => {
@@ -87,21 +88,6 @@ loading: any;
         loading.present();
 
   }
-
-
-
-
-
-  // async presentPopover(ev: any) {
-  //   const popover = await this.popoverController.create({
-  //     component: PopoverComponent,
-  //     event: ev,
-  //     translucent: true
-  //   });
-  //   return await popover.present();
-  // }
-
-
 
 
 }

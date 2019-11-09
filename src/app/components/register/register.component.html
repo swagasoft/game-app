@@ -16,7 +16,7 @@
             SIGN UP</ion-card-title>
         </ion-card-header>
 
-    <form #loginForm ngform="loginForm" name="form" (submit)="register(loginForm)" class="text-center" >
+    <form #loginForm ngform="loginForm" name="form" (submit)="register()" class="text-center" >
       <ion-item>
           <ion-label position="floating">Phone</ion-label>
         <ion-input #number name="number" position="floating"  [(ngModel)]="model.number"

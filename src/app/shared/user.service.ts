@@ -9,6 +9,8 @@ import { environment } from 'src/environments/environment';
 })
 export class UserService {
 token: any;
+accountBalance: any;
+username: any;
 
 
 noAuthHeader = {headers: new HttpHeaders({NoAuth: 'True'})};
@@ -59,8 +61,16 @@ AuthHeader = {headers: new HttpHeaders().set('Authorization',
     console.log(id);
     return this.http.get(environment.apiBaseUrl + `/delete-question${id}`);
   }
+  postTransaction(tranx){
+    return this.http.post(environment.apiBaseUrl + `/submit-transaction`, tranx);
+  }
+  loadBalance(){
+    return this.http.get(environment.apiBaseUrl + '/load-balance');
+  }
 
-
+  getRandomQuestionsForGame(){
+    return this.http.get(environment.apiBaseUrl + '/get-random-questions-for-game');
+  }
 
 
 
@@ -103,7 +113,11 @@ AuthHeader = {headers: new HttpHeaders().set('Authorization',
    public logout(): void {
     this.deleteToken();
     this.token = '';
+    this.username = '';
+    this.accountBalance = '';
     this.router.navigateByUrl('/login');
    }
+
+ 
  
 }

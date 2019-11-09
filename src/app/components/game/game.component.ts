@@ -1,4 +1,8 @@
+import { UserService } from './../../shared/user.service';
+import { Router } from '@angular/router';
+import { GameServiceService } from './../../shared/game-service.service';
 import { Component, OnInit } from '@angular/core';
+import { AlertController } from '@ionic/angular';
 
 @Component({
   selector: 'app-game',
@@ -6,53 +10,53 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./game.component.scss'],
 })
 export class GameComponent implements OnInit {
-gameOver: boolean;
-public gameLive: boolean;
 
-  constructor() { }
+  constructor(public gameService: GameServiceService,
+              public userService: UserService,
+              public alertController: AlertController,
+              private router: Router) { }
 
   ngOnInit() {
-    this.gameLive = false;
-    this.gameTimer();
+    this.gameService.gameTimer();
   }
 
-   // timer
-   gameTimer() {
-    var deadline = new Date('nov 5, 2019 15:41:25').getTime();
-    
-    var x = setInterval(()=> {
-    var now = new Date().getTime();
-    var t = deadline - now;
-    var days = Math.floor(t / (1000 * 60 * 60 * 24)).toString();
-    var hours = Math.floor((t % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)).toString();
-    var minutes = Math.floor((t % (1000 * 60 * 60)) / (1000 * 60)).toString();
-    var seconds = Math.floor((t % (1000 * 60)) / 1000).toString();
-    document.getElementById('day').innerHTML = days ;
-    document.getElementById('hour').innerHTML = hours;
-    document.getElementById('minute').innerHTML = minutes;
-    document.getElementById('second').innerHTML = seconds;
-    
-    if (t < 0) {
-      this.goLive();
-            clearInterval(x);
-            // document.getElementById('demo').innerHTML = '';
-            document.getElementById('day').innerHTML = '0';
-            document.getElementById('hour').innerHTML = '0';
-            document.getElementById('minute').innerHTML = '0' ;
-            document.getElementById('second').innerHTML = '0'; 
-          
-          }
-    }, 1000);
-    
+  
+
+      startGame() {
+        if (this.gameService.gameLive) {
+          this.presentAlertConfirm();
+        } else {
+          console.log('not yet time!');
+        }
       }
 
-      startGame(){
-
+      async presentAlertConfirm() {
+        const alert = await this.alertController.create({
+          header: 'Continue to game ?',
+          message: ' <strong class="text-dark"> You are about to start a game that will last $ min</strong>!!!',
+          buttons: [
+            {
+              text: 'Cancel',
+              role: 'cancel',
+              cssClass: 'secondary',
+              handler: (blah) => {
+                console.log('cancle game');
+              }
+            }, {
+              text: 'Yes',
+              cssClass: 'success',
+              handler: () => {
+          this.router.navigate(['/start-game']);
+             
+              }
+            }
+          ]
+        });
+    
+        await alert.present();
       }
 
-      goLive(){
-        console.log('going live...');
-        this.gameLive = true;
-      }
+    
 
 }
+ 

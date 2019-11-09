@@ -1,8 +1,7 @@
 <ion-menu side="start">
         <ion-header>
           <ion-toolbar translucent class="pt-1">
-            <ion-title>Menu</ion-title>
-    
+            
             <ion-thumbnail slot="start">
               </ion-thumbnail>
           </ion-toolbar>
@@ -26,40 +25,45 @@
         <ion-content class="content ion-padding m-0">
           <!-- content area -->
 
-          <div class="resp-container game-over-section">
+          <div class="resp-container game-over-section m-0">
               <ion-card class=" d-flex justify-content-center m-0">
                 <div id="clockdiv"> 
                   <div> 
-                    <span class="days" id="day"></span> 
+                    <span class="days" id="day">{{gameService.timeDays}} </span> 
                     <div class="smalltext">Days</div> 
                   </div> 
                   <div> 
-                    <span class="hours" id="hour"></span> 
+                    <span class="hours" id="hour">{{gameService.timeHours}} </span> 
                     <div class="smalltext">Hours</div> 
                   </div> 
                   <div> 
-                    <span class="minutes" id="minute"></span> 
+                    <span class="minutes" id="minute">{{gameService.timeMinute}} </span> 
                     <div class="smalltext">Minutes</div> 
                   </div> 
                   <div> 
-                    <span class="seconds" id="second"></span> 
+                    <span class="seconds" id="second">{{gameService.timeSeconds}} </span> 
                     <div class="smalltext">Seconds</div> 
                   </div> 
                 </div> 
               </ion-card>
 
+              <ion-card *ngIf="gameService.gameLive" class="d-flex m-0 justify-content-center">
+                <h1 class="text-dark text-center font-weight-bold">LIVE!</h1>
+              </ion-card>
+              
+
               <!-- <ion-card>
                 <h1>LIVE...</h1>
               </ion-card> -->
 
-              <ion-card class="m-0 d-flex justify-content-center">
+              <ion-card *ngIf="!gameService.gameLive" class="m-0 d-flex justify-content-center">
                 <iframe class="m-0" width="100%" height="100%"
                   src="https://www.youtube.com/embed/tgbNymZ7vqY"></iframe>
               </ion-card>
           </div>
 
-            <div class="game-tip">
-                <ion-card  class="green darken-2 "  rows="6" cols="20">
+            <div class="game-tip" *ngIf="!gameService.gameLive">
+                <ion-card  class="green darken-2 m-0 "  rows="6" cols="20">
                   <ion-card-header class="text-center  green darken-4 text-white">GAME TIPS& FUN FACTS</ion-card-header>
                   <ion-card-content class="p-5">
                       <ion-text class="text-white" >  text content here , testing the fun fact...</ion-text>
@@ -68,7 +72,7 @@
             </div>
 
 
-            <div class=" game-live" *ngIf="gameLive">
+            <div class=" game-live" *ngIf="gameService.gameLive">
                 <div class="col d-flex justify-content-center affix">
                     <ion-button (click)="startGame()" color="success">START GAME</ion-button>
                 </div>

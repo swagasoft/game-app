@@ -1,3 +1,134 @@
-<p>
-  how-it-works works!
-</p>
+<ion-menu side="start">
+    <ion-header>
+      <ion-toolbar translucent class="pt-1">
+        <ion-title>Menu</ion-title>
+
+        <ion-thumbnail slot="start">
+          </ion-thumbnail>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <app-menu></app-menu>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" main>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start" class="p-1">
+          <ion-menu-button color="success"></ion-menu-button>
+        </ion-buttons>
+        <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="content ion-padding m-0">
+      <!-- content area -->
+       
+      <div class=" row">
+            <div  class="col">
+                <ion-card class="">
+                    <ion-card-header class="font-weight-bold "><h3> STEP 1</h3> </ion-card-header>
+                    <ion-card-content>
+                      <ion-row>
+                        <ion-col>
+                            <div class="col d-flex justify-content-left">
+                                <ion-img class="image" src="../../../assets/icon/profile_icon.png"></ion-img>
+                                </div>
+                        </ion-col>
+                        <ion-col>
+                            <ion-icon size="large" color="success" name="arrow-dropright"></ion-icon>
+                        <h1 class="text-center font-weight-bold"> Create
+                           <br> 
+                           an account</h1>
+                        </ion-col>
+                      </ion-row>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+          </div>
+
+      <div class=" row">
+            <div  class="col">
+                <ion-card class="">
+                    <ion-card-header class="font-weight-bold "><h3> STEP 2</h3> </ion-card-header>
+                    <ion-card-content>
+                      <ion-row>
+                        <ion-col>
+                            <div class="col d-flex justify-content-left">
+                                <ion-img class="image" src="../../../assets/icon/wallet_icon.png"></ion-img>
+                                </div>
+                        </ion-col>
+                        <ion-col>
+                            <ion-icon size="large" color="success" name="arrow-dropright"></ion-icon>
+                        <h1 class="text-center font-weight-bold "> Fund
+                           <br> 
+                           your wallet</h1>
+                        </ion-col>
+                      </ion-row>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+          </div>
+
+      <div class=" row">
+            <div  class="col">
+                <ion-card class="">
+                    <ion-card-header class="font-weight-bold "><h3> STEP 3</h3> </ion-card-header>
+                    <ion-card-content>
+                      <ion-row>
+                        <ion-col>
+                            <div class="col d-flex justify-content-left">
+                                <ion-img class="image" src="../../../assets/icon/prepare.png"></ion-img>
+                                </div>
+                        </ion-col>
+                        <ion-col>
+                            <ion-icon size="large" color="success" name="arrow-dropright"></ion-icon>
+                        <h1 class="text-center font-weight-bold "> Prepare
+                           <br> 
+                           <small>(Read and check tips on our playform)</small></h1>
+                        </ion-col>
+                      </ion-row>
+                    </ion-card-content>
+                </ion-card>
+            </div>
+          </div>
+      <div class=" row">
+            <div  class="col">
+                <ion-card class="">
+                    <ion-card-header class="font-weight-bold "><h3> STEP 4</h3> </ion-card-header>
+                    <ion-card-content>
+                      <ion-row>
+                        <ion-col>
+                            <div class="col d-flex justify-content-left">
+                                <ion-img class="image" src="../../../assets/icon/quiz_icon.png"></ion-img>
+                                </div>
+                        </ion-col>
+                        <ion-col>
+                            <ion-icon size="large" color="success" name="arrow-dropright"></ion-icon>
+                        <h1 class="text-center font-weight-bold "> Take
+                           <br> 
+                          the Quiz</h1>
+                        </ion-col>
+                      </ion-row>
+                    </ion-card-content>
+                </ion-card>
+
+                <ion-button color="success" (click)="startHere()">START HERE</ion-button>
+            </div>
+          </div>
+
+     <!-- end content area -->
+    </ion-content>
+    <app-footer></app-footer>
+  </div>
+
+<ion-menu-controller></ion-menu-controller>
+
+<script>
+  function openMenu() {
+    document.querySelector('ion-menu-controller')
+      .open();
+  }
+</script>

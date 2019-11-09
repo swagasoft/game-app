@@ -9,6 +9,14 @@ export class ProfileComponent implements OnInit {
 
   constructor() { }
 
+
+  model = {
+    fullname :'',
+    nationality: '',
+    accountNumber: '',
+    accountName: '',
+    bank : ''
+  }
   ngOnInit() {}
 
 }

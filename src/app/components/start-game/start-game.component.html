@@ -1,0 +1,99 @@
+<ion-menu side="start">
+    <ion-header>
+      <ion-toolbar translucent class="pt-1">
+        <ion-title>Menu</ion-title>
+
+        <ion-thumbnail slot="start">
+          </ion-thumbnail>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <app-menu></app-menu>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" main>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start" class="p-1">
+          <ion-menu-button color="success"></ion-menu-button>
+        </ion-buttons>
+        <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="content ion-padding m-0" >
+
+      <ion-card>
+        <ion-card-title> <small>WINNERS SLOT...THERE’S STILL A PLACE FOR YOU</small>
+          </ion-card-title>
+          <ion-card-content>
+            <ion-row>
+              <ion-col>
+                 <ion-icon name="person"></ion-icon> <p> swagasoft</p><br> <p>1.9</p>
+               </ion-col>
+              <ion-col>
+                 <ion-icon name="person"></ion-icon> <p> wonderful</p><br> <p>1.3</p>
+               </ion-col>
+              <ion-col>
+                 <ion-icon name="person"></ion-icon> <p> mayowa</p><br> <p>0.5</p>
+               </ion-col>
+              <ion-col>
+                 <ion-icon name="person"></ion-icon> <p> gospel</p><br> <p>1.6</p>
+               </ion-col>
+              <ion-col>
+                 <ion-icon name="person"></ion-icon> <p> oscar</p><br> <p>1.9</p>
+               </ion-col>
+              <ion-col>
+                 <ion-icon name="person"></ion-icon> <p> temitope</p><br> <p>1.9</p>
+               </ion-col>
+              <ion-col>
+                 <ion-icon name="person"></ion-icon> <p> jemiyo</p><br> <p>1.9</p>
+               </ion-col>
+            </ion-row>
+
+          </ion-card-content>
+      </ion-card>
+      <!-- content area -->
+         <!-- slides -->
+         <p id="time">04:00</p>
+         <ion-slides>
+          <ion-slide class="m-0 p-0"  *ngFor="let item of gameQuestions; let i = index ">
+            <ion-card class="m-0"  >
+            <ion-card-header> <p>{{i + 1}} </p></ion-card-header>
+            <ion-card-title><p>{{item.question}} </p></ion-card-title>
+            <ion-card-content class="text-left">
+              <div (click)="userSelect(item.option1)">
+                  <p> A : {{item.option1}} </p>
+              </div>
+              <div  (click)="userSelect(item.option2)">
+                  <p> B :  {{item.option2}} </p>
+              </div>
+            <div  (click)="userSelect(item.option3)">
+                <p> C : {{item.option3}} </p>
+            </div >
+           <div  (click)="userSelect(item.option4)">
+              <p> D : {{item.option4}} </p>
+           </div>
+            </ion-card-content>
+            </ion-card>  
+            </ion-slide>
+         
+        </ion-slides>
+         <!-- end slides -->
+
+<!-- can be any valid media query https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries -->
+<ion-split-pane when="(min-width: 40px)"></ion-split-pane>
+      <!-- end content area -->
+    </ion-content>
+  </div>
+
+<ion-menu-controller></ion-menu-controller>
+
+<script>
+  function openMenu() {
+    document.querySelector('ion-menu-controller')
+      .open();
+  }
+</script>

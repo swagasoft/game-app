@@ -1,3 +1,5 @@
+import { GameServiceService } from './shared/game-service.service';
+import { StartGameComponent } from './components/start-game/start-game.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { HowItWorksComponent } from './components/how-it-works/how-it-works.component';
@@ -19,6 +21,7 @@ import { AuthguardGuard } from './auths/authguard.guard';
 import { RegisterComponent } from './components/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { UserService } from './shared/user.service';
+import { Angular4PaystackModule } from 'angular4-paystack';
 import { WelcomepageComponent } from './components/welcomepage/welcomepage.component';
 import { LoginComponent } from './components/login/login.component';
 import { NgModule } from '@angular/core';
@@ -55,6 +58,7 @@ import { ManageQuestionsComponent } from './components/manage-questions/manage-q
   AdminAccountComponent,
   FooterComponent,
   ContactComponent,
+  StartGameComponent,
   PrivacyComponent,
   ProfileComponent,
   GameComponent,
@@ -62,9 +66,11 @@ import { ManageQuestionsComponent } from './components/manage-questions/manage-q
   schemas: [ NO_ERRORS_SCHEMA],
 
   entryComponents: [],
-  imports: [BrowserModule, 
+  imports:
+   [BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    Angular4PaystackModule,
     IonicModule.forRoot(),
     HttpClientModule,
      AppRoutingModule],
@@ -74,9 +80,11 @@ import { ManageQuestionsComponent } from './components/manage-questions/manage-q
     StatusBar,
     UserService,
     NativeAudio,
+    Angular4PaystackModule,
     SplashScreen,
     AuthguardGuard,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    UserService, AuthguardGuard, GameServiceService
   ],
   bootstrap: [AppComponent]
 })

@@ -1,3 +1,78 @@
-<p>
-  faq works!
-</p>
+<ion-menu side="start">
+    <ion-header>
+      <ion-toolbar translucent class="pt-1">
+     
+
+        <ion-thumbnail slot="start">
+          </ion-thumbnail>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      <ion-list>
+        <app-menu></app-menu>
+      </ion-list>
+    </ion-content>
+  </ion-menu>
+
+  <div class="ion-page" main>
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start" class="p-1">
+          <ion-menu-button color="success"></ion-menu-button>
+        </ion-buttons>
+        <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content class="content ion-padding m-0">
+      <!-- content area -->
+       
+      <div>
+          <ion-card class="text-center">
+              <ion-card-header class="font-weight-bild text-white grey darken-2"> HOW & WHEN DO I GET PAID?</ion-card-header>
+              <ion-card-content class="p-5">
+                  <h5 class="text-center fint-weight-bold">When you emerge as one of our 10 winners for the week.
+                      We immediately send your money to your account details
+                      you provided in three (3) working days </h5>
+              </ion-card-content>
+          </ion-card>
+      </div>
+
+      <div>
+          <ion-card class="text-center">
+              <ion-card-header class="font-weight-bild text-white grey darken-2"> HOW MUCH DO I NEED TO PLAY A GAME?</ion-card-header>
+              <ion-card-content class="p-5">
+                  <h5 class="text-center fint-weight-bold">You need at the some of N500.00 to be in your wallet to
+                      be a pa a game. </h5>
+              </ion-card-content>
+          </ion-card>
+      </div>
+
+      <div>
+          <ion-card class="text-center">
+              <ion-card-header class="font-weight-bild text-white grey darken-2"> HOW & WHEN DO I GET PAID?</ion-card-header>
+              <ion-card-content class="p-5">
+                  <h5 class="text-center fint-weight-bold">When you emerge as one of our 10 winners for the week.
+                      We immediately send your money to your account details
+                      you provided in three (3) working days </h5>
+              </ion-card-content>
+          </ion-card>
+      </div>
+     <!-- end content area -->
+     <ion-text class="font-weight-bold   ">Have questions not covered here, </ion-text> <br>
+        <ion-text>Reach us via;</ion-text> <br>
+      
+     <ion-text>email: info@i-sabi.com </ion-text> <br>
+     <ion-text>tel: 08060398968 </ion-text>
+
+    </ion-content>
+    <app-footer></app-footer>
+  </div>
+
+<ion-menu-controller></ion-menu-controller>
+
+<script>
+  function openMenu() {
+    document.querySelector('ion-menu-controller')
+      .open();
+  }
+</script>
