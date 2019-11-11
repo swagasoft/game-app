@@ -10,6 +10,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 })
 export class AdminUploadComponent implements OnInit {
   public catType: any[];
+  loading: boolean;
 
   
   constructor(private userService: UserService,
@@ -34,10 +35,13 @@ export class AdminUploadComponent implements OnInit {
 
   
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loading = false;
+  }
 
 
   submit(form: NgForm){
+    this.loading = true;
       console.log(form.value);
       this.questionModel.question = form.value.question;
       this.questionModel.answer = form.value.answer;
@@ -48,11 +52,13 @@ export class AdminUploadComponent implements OnInit {
       this.questionModel.tip = form.value.tip;
       this.userService.postQuestion(this.questionModel).subscribe(
         response => {
+          this.loading = false;
           console.log(response);
           this.resetForm();
           this.presentToast();
         },
         err => {
+          this.loading = false;
           console.log(err);
           console.log(err.error.message);
           this.presentFail(err.error.message);

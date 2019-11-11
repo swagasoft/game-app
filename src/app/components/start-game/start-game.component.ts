@@ -67,12 +67,12 @@ loadingGame: boolean;
  
 
 getQuestionForGame(){
-  console.log('FIRES QQQ')
   this.userService.getRandomQuestionsForGame().subscribe(
     res => {
       this.gameQuestions = res;
       this.loadingGame = false;
-      this.startGameTime();
+    
+      this.countDownTime();
       console.log(this.gameQuestions);
     },
     err => {
@@ -91,6 +91,42 @@ userSelect(selectOption, correctAnswer){
   }
 }
 
+
+countDownTime(){
+   // COUNTDOWN IN SECONDS
+  // EXAMPLE - 5 MINS = 5 X 60 = 300 SECS
+  let counter = 200;
+
+  // Get the containers
+  let min = document.getElementById("cd-min");
+  let sec = document.getElementById("cd-sec");
+
+  // Start if not past end date 
+  if (counter > 0) {
+    let ticker = setInterval(()=> {
+      // Stop if passed end time
+      counter--;
+      if (counter <= 0) { 
+        clearInterval(ticker); 
+        counter = 0;
+      }
+
+      // Calculate remaining time
+      var secs = counter;
+      var mins  = Math.floor(secs / 60); // 1 min = 60 secs
+      secs -= mins * 60;
+
+      // Update HTML
+      console.log(mins);
+      console.log(secs);
+      this.timeMinute = mins;
+      this.timeSeconds = secs;
+      
+      // counter.min.innerHTML = mins;
+      // counter.sec.innerHTML = secs;
+    }, 1000);
+  }
+}
 
 
 

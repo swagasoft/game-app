@@ -26,6 +26,14 @@
     <ion-content class="" >
       <div class="content m-0">
 
+          <ion-fab style="position: fixed;" vertical="top" horizontal="end" slot="fixed">
+              <ion-fab-button color="success">
+               <ion-row>
+                 <h5 class="mt-2 p-3 font-weight-bold">{{timeMinute}} : {{timeSeconds}} </h5>
+               </ion-row>
+              </ion-fab-button>
+            </ion-fab>
+
       <ion-card  *ngIf="!loadingGame">
         <ion-card-title> <small>THERE’S STILL A PLACE FOR YOU</small>
           </ion-card-title>
@@ -49,9 +57,20 @@
       </ion-card> 
 
 
+      <!-- time 222 -->
+      <!-- <div class="countdown">
+          <div class="square">
+            <div class="digits" id="cd-min">{{timeMinute}} </div>
+            <div class="text">M</div>
+          </div>
+          <div class="square">
+            <div class="digits" id="cd-sec">{{timeSeconds}} </div>
+            <div class="text">S</div>
+          </div>
+        </div> -->
+      <!-- end time 222 -->
 
 
-         <p class="text-center text-danger" id="time">04:00</p>
              <!-- loader -->
       <div *ngIf=loadingGame class=" row d-flex justify-content-center">
         <div class="lds-facebook"><div></div><div></div><div></div></div>

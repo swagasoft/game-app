@@ -94,6 +94,7 @@
   </ion-item>
     </ion-card>
 
+    
     <ion-card>
   <ion-item>
     <ion-label>Tip</ion-label>
@@ -101,6 +102,12 @@
     required="true" spellcheck="true"></ion-textarea>
   </ion-item>
     </ion-card>
+
+    <!-- loader -->
+    <div *ngIf="loading" class="loader d-flex justify-content-center row">
+        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+
     
     <ion-button type="submit" color="success">Submit</ion-button>
   </form>
