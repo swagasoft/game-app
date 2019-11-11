@@ -15,6 +15,7 @@ gameOver: boolean;
 timer: number;
 gameQuestions: any;
 setQuestions: Observable<any>;
+loadingGame: boolean;
 
   constructor(private userService: UserService) { 
   
@@ -34,8 +35,9 @@ setQuestions: Observable<any>;
 
   ngOnInit() {
     this.getQuestionForGame();
+    this.loadingGame = true;
     this.gameOver = false;
-    this.start();
+    
 
   } 
       
@@ -57,7 +59,7 @@ setQuestions: Observable<any>;
     }, 1000);
 }
 
-  start () {
+  startGameTime () {
     var fiveMinutes = 60 * 4,
         display = document.querySelector('#time');
     this.startTimer(fiveMinutes, display);
@@ -69,17 +71,27 @@ getQuestionForGame(){
   this.userService.getRandomQuestionsForGame().subscribe(
     res => {
       this.gameQuestions = res;
+      this.loadingGame = false;
+      this.startGameTime();
       console.log(this.gameQuestions);
     },
     err => {
+      this.loadingGame = false;
       console.log(err);
     }
   );
 }
 
-userSelect(option){
-  console.log('you have selected..',option);
+userSelect(selectOption, correctAnswer){
+  console.warn('SELECT=',selectOption, correctAnswer);
+  if (selectOption == correctAnswer) {
+    console.log('CORRECT!');
+  }else{
+    console.log('WRONG');
+  }
 }
+
+
 
 
 }

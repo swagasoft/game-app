@@ -1,15 +1,21 @@
 
 
 
-<ion-content class="content background">
+<ion-content class=" background">
       
-  <ion-card class="scroll-content m-0">
-    <ion-card-header class="text-white display-5 mt-5 font-weight-bold"> LOGIN</ion-card-header>
+  <ion-card class="scroll-content content m-0">
+    <!-- <ion-card-header class=" pt-5 font-weight-bold"> LOGIN</ion-card-header> -->
     <ion-card-content class=" content">
-      <h6> how much do you know?</h6>
+      <h6 class="mt-5"> how much do you know?</h6>
       <h6 class="font-weight-bold"> <strong color="sabi">show</strong> us </h6>
 
-        <form  #loginForm ngform="loginForm" name="form"  (submit)="login(loginForm)">
+      <!-- loader -->
+      <div *ngIf="loading" class=" row d-flex justify-content-center">
+        <div class="lds-ring  loading mt-2"><div></div><div></div><div></div><div></div></div>
+      </div>
+
+        <form class="mt-5" #loginForm 
+         ngform="loginForm" name="form" [hidden]="loading" (submit)="login(loginForm)">
           <ion-item>
               <ion-label position="floating">Phone</ion-label>
               <ion-input type="tel" inputmode="number" #number name="number" clearInput [(ngModel)]="model.number"
@@ -22,7 +28,7 @@
            [(ngModel)]="model.password" clearInput required="true"></ion-input>
           </ion-item>
           
-           
+         
         
         <p>Forget login details?  <a>get help siging in</a> </p>
 

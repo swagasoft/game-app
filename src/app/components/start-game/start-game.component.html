@@ -23,68 +23,69 @@
         <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="content ion-padding m-0" >
+    <ion-content class="" >
+      <div class="content m-0">
 
-      <ion-card>
-        <ion-card-title> <small>WINNERS SLOT...THERE’S STILL A PLACE FOR YOU</small>
+      <ion-card  *ngIf="!loadingGame">
+        <ion-card-title> <small>THERE’S STILL A PLACE FOR YOU</small>
           </ion-card-title>
-          <ion-card-content>
+          <ion-card-content >
             <ion-row>
               <ion-col>
-                 <ion-icon name="person"></ion-icon> <p> swagasoft</p><br> <p>1.9</p>
+                 <ion-icon name="person"></ion-icon> <p class="font-weight-bold"> swagasoft</p><br> <p>enlapse - 1.9</p>
                </ion-col>
               <ion-col>
-                 <ion-icon name="person"></ion-icon> <p> wonderful</p><br> <p>1.3</p>
+                 <ion-icon name="person"></ion-icon> <p  class="font-weight-bold"> wonderful</p><br> <p> enlapse - 1.3</p>
                </ion-col>
               <ion-col>
-                 <ion-icon name="person"></ion-icon> <p> mayowa</p><br> <p>0.5</p>
+                 <ion-icon name="person"></ion-icon> <p  class="font-weight-bold"> mayowa</p><br> <p>enlapse - 0.5</p>
                </ion-col>
               <ion-col>
-                 <ion-icon name="person"></ion-icon> <p> gospel</p><br> <p>1.6</p>
-               </ion-col>
-              <ion-col>
-                 <ion-icon name="person"></ion-icon> <p> oscar</p><br> <p>1.9</p>
-               </ion-col>
-              <ion-col>
-                 <ion-icon name="person"></ion-icon> <p> temitope</p><br> <p>1.9</p>
-               </ion-col>
-              <ion-col>
-                 <ion-icon name="person"></ion-icon> <p> jemiyo</p><br> <p>1.9</p>
+                 <ion-icon name="person"></ion-icon> <p  class="font-weight-bold"> peter</p><br> <p>enlapse - 0.3</p>
                </ion-col>
             </ion-row>
 
           </ion-card-content>
-      </ion-card>
-      <!-- content area -->
-         <!-- slides -->
-         <p id="time">04:00</p>
-         <ion-slides>
+      </ion-card> 
+
+
+
+
+         <p class="text-center text-danger" id="time">04:00</p>
+             <!-- loader -->
+      <div *ngIf=loadingGame class=" row d-flex justify-content-center">
+        <div class="lds-facebook"><div></div><div></div><div></div></div>
+      </div>
+
+         <ion-slides *ngIf="!loadingGame" pager="true" >
           <ion-slide class="m-0 p-0"  *ngFor="let item of gameQuestions; let i = index ">
             <ion-card class="m-0"  >
-            <ion-card-header> <p>{{i + 1}} </p></ion-card-header>
-            <ion-card-title><p>{{item.question}} </p></ion-card-title>
-            <ion-card-content class="text-left">
-              <div (click)="userSelect(item.option1)">
-                  <p> A : {{item.option1}} </p>
-              </div>
-              <div  (click)="userSelect(item.option2)">
-                  <p> B :  {{item.option2}} </p>
-              </div>
-            <div  (click)="userSelect(item.option3)">
-                <p> C : {{item.option3}} </p>
-            </div >
-           <div  (click)="userSelect(item.option4)">
-              <p> D : {{item.option4}} </p>
+           <div class="justify-content-right d-flex ml-2 ">
+              <h3 >{{i + 1}}</h3>
            </div>
+            
+            <ion-card-title><p>{{item.question}} </p></ion-card-title>
+            <ion-card-content class="text-left mb-5">
+           
+                <ion-button  expand="full" color="secondary" (click)="userSelect(item.option1, item.answer)"> A : {{item.option1}} </ion-button>
+              
+                  <ion-button  expand="full" color="secondary" (click)="userSelect(item.option2, item.answer)"> B : {{item.option2}} </ion-button>
+              
+            
+                  <ion-button  expand="full" color="secondary" (click)="userSelect(item.option3, item.answer)"> C : {{item.option3}} </ion-button>
+              
+               
+                  <ion-button  expand="full" color="secondary" (click)="userSelect(item.option4, item.answer)"> D : {{item.option4}} </ion-button>
+              
+                       
             </ion-card-content>
             </ion-card>  
             </ion-slide>
          
         </ion-slides>
-         <!-- end slides -->
 
-<!-- can be any valid media query https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries -->
-<ion-split-pane when="(min-width: 40px)"></ion-split-pane>
+      
+      </div>
       <!-- end content area -->
     </ion-content>
   </div>

@@ -33,7 +33,7 @@ export class GameComponent implements OnInit {
       async presentAlertConfirm() {
         const alert = await this.alertController.create({
           header: 'Continue to game ?',
-          message: ' <strong class="text-dark"> You are about to start a game that will last $ min</strong>!!!',
+          message: ' <strong class="text-dark"> You are about to start a game that will last <p class="text-danger"> 4 min</p></strong>',
           buttons: [
             {
               text: 'Cancel',

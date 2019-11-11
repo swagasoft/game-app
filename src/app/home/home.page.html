@@ -3,27 +3,32 @@
 
       <ion-card class="text-center">
       
-          <div id="clockdiv"> 
-            <div> 
-              <span class="days" id="day"></span> 
-              <div class="smalltext">Days</div> 
+         <ion-row>
+           <ion-col>
+            <div id="clockdiv"> 
+              <div> 
+                <span class="days" id="day"></span> 
+                <div class="smalltext">Days</div> 
+              </div> 
+              <div> 
+                <span class="hours" id="hour"></span> 
+                <div class="smalltext">Hours</div> 
+              </div> 
+              <div> 
+                <span class="minutes" id="minute"></span> 
+                <div class="smalltext">Minutes</div> 
+              </div> 
+              <div> 
+                <span class="seconds" id="second"></span> 
+                <div class="smalltext">Seconds</div> 
+              </div> 
             </div> 
-            <div> 
-              <span class="hours" id="hour"></span> 
-              <div class="smalltext">Hours</div> 
-            </div> 
-            <div> 
-              <span class="minutes" id="minute"></span> 
-              <div class="smalltext">Minutes</div> 
-            </div> 
-            <div> 
-              <span class="seconds" id="second"></span> 
-              <div class="smalltext">Seconds</div> 
-            </div> 
-          </div> 
+           </ion-col>
+         </ion-row>
             
           <p id="demo"></p> 
       </ion-card>
+
       <ion-text >
           <h6 class="text-center font-weight-bold grey-text"> We are Here to Encourage <br>
           Learning and Reward hard Work</h6>
@@ -43,7 +48,7 @@
 
 
       <ion-card class="scroll-content m-0 mb-5 pb-5">
-          <ion-button expand="full" size="large" shape="round" (click)="login()" color="success"> TEST MODE
+          <ion-button expand="full" size="large" shape="round" (click)="TestMode()" color="success"> TEST MODE
               <ion-icon size="small" class="ml-3" name="arrow-round-forward"></ion-icon></ion-button>
       </ion-card>
   </ion-content>

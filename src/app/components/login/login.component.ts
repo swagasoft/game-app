@@ -14,7 +14,7 @@ export class LoginComponent implements OnInit {
   phoneRegex =  /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
 number: any;
 password: any;
-loading: any;
+loading: boolean;
 
   constructor(public loadingController: LoadingController,
               private fb: FormBuilder,
@@ -29,19 +29,21 @@ loading: any;
   };
 
   ngOnInit() {
+    this.loading = false;
   }
 
   async login(form: any) {
+    this.loading = true;
     this.userService.login(this.model).subscribe(response => {
       this.userService.setToken(response['token']);
       this.userService.loadBalance();
       localStorage.setItem('appUsername',response['doc']['username']);
-      
+      this.loading = false;
       this.router.navigate(['/game']);
    
         
     }, error => {
-      console.log(error);
+      this.loading = false;
       let message = error.error;
       this.presentAlertConfirm(message);
     });
@@ -76,18 +78,6 @@ loading: any;
 
   }
 
-
-  async presentLoading() {
-    const loading = await this.loadingController.create({
-      spinner: null,
-      // duration: 5000,
-      message: 'Please wait...',
-      translucent: true,
-      cssClass: 'custom-class custom-loading'
-    });
-        loading.present();
-
-  }
 
 
 }

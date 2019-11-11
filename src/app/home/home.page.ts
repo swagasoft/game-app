@@ -15,12 +15,12 @@ export class HomePage  implements OnInit {
 
   ngOnInit() {
     this.gameTimer();
-    this.playAudio();
+    // this.playAudio();
 
   }
 
-  login() {
-    this.router.navigate(['/login']);
+  TestMode() {
+    this.router.navigate(['/game']);
   }
 
   // timer
@@ -46,7 +46,6 @@ if (t < 0) {
         document.getElementById('hour').innerHTML = '0';
         document.getElementById('minute').innerHTML = '0' ;
         document.getElementById('second').innerHTML = '0'; }
-        console.log(seconds);
 }, 1000);
   }
 
@@ -54,15 +53,15 @@ if (t < 0) {
     console.log('mail sent!');
   }
 
-  playAudio() {
-    this.nativeAudio.preloadSimple('uniqueId1', '../../../assets/tracks/background1.mp3').then(() => {
-      console.log('checking file');
+  // playAudio() {
+  //   this.nativeAudio.preloadSimple('uniqueId1', '../../../assets/tracks/background1.mp3').then(() => {
+  //     console.log('checking file');
       
-    this.nativeAudio.play('uniqueId1').then(() => {
-      console.log('now playing......');
-    });
+  //   this.nativeAudio.play('uniqueId1').then(() => {
+  //     console.log('now playing......');
+  //   });
 
-    });
-  }
+  //   });
+  // }
 }
 

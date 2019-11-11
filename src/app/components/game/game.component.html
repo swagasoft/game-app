@@ -22,28 +22,43 @@
             <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
           </ion-toolbar>
         </ion-header>
-        <ion-content class="content ion-padding m-0">
+        <ion-content class="">
           <!-- content area -->
+          <div class="content m-0">
 
           <div class="resp-container game-over-section m-0">
               <ion-card class=" d-flex justify-content-center m-0">
                 <div id="clockdiv"> 
-                  <div> 
-                    <span class="days" id="day">{{gameService.timeDays}} </span> 
-                    <div class="smalltext">Days</div> 
-                  </div> 
-                  <div> 
-                    <span class="hours" id="hour">{{gameService.timeHours}} </span> 
-                    <div class="smalltext">Hours</div> 
-                  </div> 
-                  <div> 
-                    <span class="minutes" id="minute">{{gameService.timeMinute}} </span> 
-                    <div class="smalltext">Minutes</div> 
-                  </div> 
-                  <div> 
-                    <span class="seconds" id="second">{{gameService.timeSeconds}} </span> 
-                    <div class="smalltext">Seconds</div> 
-                  </div> 
+                  <ion-row>
+                      <ion-row>
+                          <div> 
+                              <span class="days" id="day">{{gameService.timeDays}} </span> 
+                              <div class="smalltext">Days</div> 
+                            </div>
+                      </ion-row>
+                         <ion-row>
+                            <div> 
+                                <span class="hours" id="hour">{{gameService.timeHours}} </span> 
+                                <div class="smalltext">Hours</div> 
+                              </div>
+                         </ion-row>
+                            <ion-row>
+                                <div> 
+                                    <span class="minutes" id="minute">{{gameService.timeMinute}} </span> 
+                                    <div class="smalltext">Minutes</div> 
+                                  </div>
+                            </ion-row> 
+                             <ion-row>
+                                <div> 
+                                    <span class="seconds" id="second">{{gameService.timeSeconds}} </span> 
+                                    <div class="smalltext">Seconds</div> 
+                                  </div> 
+                             </ion-row>
+                   
+                   
+                  </ion-row>
+
+                  
                 </div> 
               </ion-card>
 
@@ -71,12 +86,12 @@
                 </ion-card>
             </div>
 
-
             <div class=" game-live" *ngIf="gameService.gameLive">
                 <div class="col d-flex justify-content-center affix">
                     <ion-button (click)="startGame()" color="success">START GAME</ion-button>
                 </div>
             </div>
+          </div>
           <!-- end content area -->
         </ion-content>
       </div>
