@@ -46,11 +46,17 @@
      </ion-item>
     </ion-card>
 
-  <!-- spinner -->
-  <div *ngIf="loading" class="display-flex row justify-content-center">
-  <ion-spinner name="lines"></ion-spinner>
-  </div>
+     <!-- loader -->
+     <div *ngIf="loading" class=" ">
+        <div class="toast-container ">
+            <div class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div>
 
+            </div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  
+        </div>
+  
+      </div>
+  
   <div *ngIf="showContent">
       <ion-card>
           <ion-card-header class="font-weight-bold"> Total :{{questionsOutPut?.length}} </ion-card-header>
@@ -83,6 +89,9 @@
             </ion-card-content>
             <ion-card-content>
               <strong >Answer</strong> {{item.answer}}
+            </ion-card-content>
+            <ion-card-content>
+              <strong >Tip</strong> {{item.tip}}
             </ion-card-content>
             <div class="row d-flex">
             <ion-card-content class="col">

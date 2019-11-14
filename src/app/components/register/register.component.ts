@@ -9,10 +9,13 @@ import { AlertController } from '@ionic/angular';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
+  loading: boolean;
+  phoneRegex =  /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+
 
   constructor(private userService: UserService,
               public alertController: AlertController,
-               private router: Router) { }
+              private router: Router) { }
   model = {
     number: '',
     password: '',
@@ -21,12 +24,15 @@ export class RegisterComponent implements OnInit {
   };
 
   register(){
+    this.loading = true;
     this.userService.registerUser( this.model).subscribe( 
       response => {
-    this.presentSuccess();        
+        this.loading = false;
+        this.presentSuccess();        
         
       },
       error => {
+        this.loading = false;
         console.log(error);
         this.presentAlertConfirm(error.error);
       }
@@ -34,7 +40,9 @@ export class RegisterComponent implements OnInit {
   }
 
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.loading = false;
+  }
 
   async presentAlertConfirm(msg) {
     const alert = await this.alertController.create({

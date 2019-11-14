@@ -107,11 +107,17 @@ ion-toolbar{
 
   
 //   loading
-.loading {
-    position: fixed;
-    z-index:999;
-    // top: 0;
-    // left: 0;
-    // right: 0;
-    // bottom: 0;
-  }
+.toast-container{
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: auto;
+  margin-bottom: 80px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+
+
+ 

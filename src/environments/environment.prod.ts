@@ -1,4 +1,4 @@
 export const environment = {
   production: false,
-apiBaseUrl: 'https://i-sabi.herokuapp.com/api'
+apiBaseUrl: 'http://172.104.114.125:8000/api'
 };

@@ -99,7 +99,7 @@ export class AdminUploadComponent implements OnInit {
       async presentToast() {
         const toast = await this.toastController.create({
           message: 'Submitted successfully...',
-          duration: 3000,
+          duration: 4000,
           position:"middle"
         });
         toast.present();

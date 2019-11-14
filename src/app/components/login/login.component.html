@@ -5,21 +5,24 @@
       
   <ion-card class="scroll-content content m-0">
     <!-- <ion-card-header class=" pt-5 font-weight-bold"> LOGIN</ion-card-header> -->
-    <ion-card-content class=" content">
+    <ion-card-content class="">
+   
       <h6 class="mt-5"> how much do you know?</h6>
       <h6 class="font-weight-bold"> <strong color="sabi">show</strong> us </h6>
 
-      <!-- loader -->
-      <div *ngIf="loading" class=" row d-flex justify-content-center">
-        <div class="lds-ring  loading mt-2"><div></div><div></div><div></div><div></div></div>
-      </div>
+    <!-- loader -->
+    <div *ngIf="loading" class="loader d-flex justify-content-center row">
+        <div class="lds-ring"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
 
+        
         <form class="mt-5" #loginForm 
          ngform="loginForm" name="form" [hidden]="loading" (submit)="login(loginForm)">
+         <div *ngIf="loading"><ion-progress-bar type="indeterminate"></ion-progress-bar></div>
           <ion-item>
               <ion-label position="floating">Phone</ion-label>
-              <ion-input type="tel" inputmode="number" #number name="number" clearInput [(ngModel)]="model.number"
-                autocomplete="off"  minlength="10"  required="true" [pattern]="phoneRegex" ></ion-input>
+              <ion-input type="number" #number name="number" clearInput [(ngModel)]="model.number"
+                autocomplete="off"  minlength="11"  required="true" [pattern]="phoneRegex" ></ion-input>
           </ion-item>
            
           <ion-item>
@@ -33,10 +36,11 @@
         <p>Forget login details?  <a>get help siging in</a> </p>
 
         <div>
-          <ion-button color="success" (submit)="login(loginForm)" type="submit"><ion-icon 
+          <ion-button  color="success"
+           (submit)="login(loginForm)" type="submit"><ion-icon 
             name="log-in" class="mr-2 text-white"></ion-icon> login</ion-button>
         </div>
-        
+  
 
       <p>Or</p>
       <ion-chip color="facebook" class="primary-color-dark text-white">

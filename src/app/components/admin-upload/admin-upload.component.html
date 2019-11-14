@@ -103,9 +103,15 @@
   </ion-item>
     </ion-card>
 
+
     <!-- loader -->
-    <div *ngIf="loading" class="loader d-flex justify-content-center row">
-        <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    <div *ngIf="loading" class=" ">
+      <div class="toast-container ">
+          <div class="lds-roller"><div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div></div>
+
+      </div>
+
     </div>
 
     

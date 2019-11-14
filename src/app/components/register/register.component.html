@@ -16,11 +16,16 @@
             SIGN UP</ion-card-title>
         </ion-card-header>
 
+        <!-- loader -->
+    <div *ngIf="loading" class=" loader d-flex justify-content-center row">
+        <div class="lds-ring "><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+
     <form #loginForm ngform="loginForm" name="form" (submit)="register()" class="text-center" >
       <ion-item>
           <ion-label position="floating">Phone</ion-label>
         <ion-input #number name="number" position="floating"  [(ngModel)]="model.number"
-         type="number" required class=""  ngControl="title"></ion-input>
+         type="number" required  minlength="11" [pattern]="phoneRegex"  ngControl="title"></ion-input>
       </ion-item>
 
       <ion-item>
