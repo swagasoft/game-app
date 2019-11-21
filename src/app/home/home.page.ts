@@ -1,3 +1,4 @@
+import { AccountService } from 'src/app/shared/account.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NativeAudio } from '@ionic-native/native-audio/ngx';
@@ -11,11 +12,13 @@ import { NativeAudio } from '@ionic-native/native-audio/ngx';
 })
 export class HomePage  implements OnInit {
 
-  constructor(private router: Router, private nativeAudio: NativeAudio) {}
+  constructor(private router: Router, private accountService: AccountService,
+     private nativeAudio: NativeAudio) {}
 
   ngOnInit() {
     this.gameTimer();
     // this.playAudio();
+    this.accountService.loadMyBalance();
 
   }
 

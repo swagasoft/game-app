@@ -9,7 +9,8 @@
 
 .content{
     background: url("../../../assets/img/bg.png");
-    height: 600px; /* You must set a specified height */
+    height: 100%; /* You must set a specified height */
+    width: 100%;
     background-position: center; /* Center the image */
     background-repeat: no-repeat; /* Do not repeat the image */
     background-size: cover; 
@@ -56,3 +57,15 @@ h1{
       padding-top: 5px; 
       font-size: 16px; 
   } 
+  //   loading
+.toast-container{
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    top: auto;
+    margin-bottom: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999;
+  }

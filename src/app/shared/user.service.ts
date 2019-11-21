@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Network } from '@ionic-native/network/ngx';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,30 @@ export class UserService {
 token: any;
 accountBalance: any;
 username: any;
+networkDisconnet = false;
 
 
 noAuthHeader = {headers: new HttpHeaders({NoAuth: 'True'})};
 AuthHeader = {headers: new HttpHeaders().set('Authorization',
 `Bearer ${localStorage.getItem('token')}`)};
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient,
+    private network: Network,
+     private router: Router) {
+
+      this.network.onDisconnect().subscribe(()=> {
+        console.log('CONNETION LOST');
+        this.networkDisconnet = true;
+      });
+
+      this.network.onConnect().subscribe(()=> {
+        setTimeout(()=> {
+          console.log(' WE ARE BACK IN CONNECTION');
+          this.networkDisconnet = false;
+        });
+      });
+
+      }
 
 
   registerUser( user) {
@@ -68,15 +86,29 @@ AuthHeader = {headers: new HttpHeaders().set('Authorization',
     return this.http.get(environment.apiBaseUrl + '/load-balance');
   }
 
+  saveUserProfile(form){
+    return this.http.post(environment.apiBaseUrl + '/save-user-profile', form);
+  }
+
   getRandomQuestionsForGame(){
     return this.http.get(environment.apiBaseUrl + '/get-random-questions-for-game');
   }
 
-
-
   getUserRole(){
     return localStorage.getItem('user-role');
    }
+
+   postQuestionRecord( record){
+     return this.http.post(environment.apiBaseUrl +'/post-game-record', record);
+   }
+   getGameRecord(){
+     return this.http.get(environment.apiBaseUrl + '/get-game-record');
+   }
+
+   deleteGameRecord(id){
+     return this.http.get(environment.apiBaseUrl + `/delete-game-record${id}`);
+   }
+
  
    setToken(token: string) {
     localStorage.setItem('token', token);
@@ -115,6 +147,7 @@ AuthHeader = {headers: new HttpHeaders().set('Authorization',
     this.token = '';
     this.username = '';
     this.accountBalance = '';
+    localStorage.removeItem('appUser');
     this.router.navigateByUrl('/login');
    }
 

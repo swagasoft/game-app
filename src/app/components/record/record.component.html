@@ -1,0 +1,77 @@
+<ion-menu side="start">
+  <ion-header>
+    <ion-toolbar translucent class="pt-1">
+      <ion-title>{{accountService.appUser}} </ion-title> <br>
+        <h6> ₦ {{accountService.accountBalance | number}} </h6>
+
+      <ion-thumbnail slot="start">
+        </ion-thumbnail>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <app-menu></app-menu>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<div class="ion-page" main>
+  <ion-header>
+    <ion-toolbar>
+      <ion-buttons (click)="menu.open()" slot="start" class="p-1">
+        <ion-menu-button color="success"></ion-menu-button>
+      </ion-buttons>
+      <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content class="content ion-padding m-0">
+    <!-- fab placed to the top end -->
+  <ion-fab  vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button (click)="gotoGame()" color="light">
+        <ion-icon  name="logo-game-controller-b"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
+    <!-- content area -->
+     <!-- loader -->
+     <div *ngIf="loading" class=" ">
+      <div class="toast-container ">
+          <div class="lds-roller"><div></div><div></div><div></div><div></div>
+          <div></div><div></div><div></div><div></div></div>
+      </div>
+    </div>
+
+    <ion-item  class="text-center font-weight-bold"> 
+      <ion-badge color="success" class="text-center">GAME LIST</ion-badge> <ion-badge color="success">{{gameRecord?.length}} </ion-badge>  </ion-item>
+    <div  *ngFor="let item of gameRecord; index as i">
+      <ion-card class="text-center">
+        <div class="d-flex">
+          
+          <ion-list-header class="font-weight-bold justify-content-left"> {{i + 1}} </ion-list-header>
+          <p class="font-weight-bold justify-content-left"> {{item.Date | date }}</p>
+          <ion-row>
+            <ion-icon (click)="deleteRecord(item._id)" class="justify-content-right" size="large" color="danger" name="trash"></ion-icon>
+
+          </ion-row>
+        </div>  
+        
+        <ion-list class="font-weight-bold"> ENLAPSED  {{item.minutes}} min {{item.seconds}} seconds </ion-list>
+        <ion-list *ngIf="item.correct_qst == 15;" class="font-weight-bold text-white green darken-4" > NOMININATED !</ion-list>
+        <ion-list class="font-weight-bold ">CORRECT ANSWER   <p class="text-success"> {{item.correct_qst}}</p></ion-list>
+        <ion-list class="font-weight-bold">WRONG ANSWER  <p class="text-danger"> {{item.wrong_qst}}</p></ion-list>
+      </ion-card>
+    </div>
+   
+    <!-- end content area -->
+
+  </ion-content>
+  <!-- <app-footer></app-footer> -->
+</div>
+
+<ion-menu-controller></ion-menu-controller>
+
+<script>
+function openMenu() {
+  document.querySelector('ion-menu-controller')
+    .open();
+}
+</script>

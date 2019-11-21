@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { UserService } from './../../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 
@@ -8,7 +9,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService,
+              private router: Router) { }
 
   ngOnInit() {}
 
@@ -16,4 +18,29 @@ export class MenuComponent implements OnInit {
   logout(){
     this.userService.logout();
   }
+  gotoWelcome(){
+    this.router.navigate(['welcome']);
+  }
+  goleaderboard(){
+    this.router.navigate(['leaderboard']);
+  }
+
+  gotoProfile(){
+    this.router.navigate(['profile']);
+  }
+  gotoGame(){
+    this.router.navigate(['game']);
+  }
+  gotoGameRecord(){
+    this.router.navigate(['game-record']);
+  }
+gotoAccount(){
+  this.router.navigate(['account']);
+}
+gotoSettings(){
+  this.router.navigate(['settings']);
+}
+gotoAdmin(){
+  this.router.navigate(['admin-upload']);
+}
 }

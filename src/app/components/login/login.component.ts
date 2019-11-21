@@ -1,7 +1,7 @@
 import { async } from '@angular/core/testing';
 import { UserService } from './../../shared/user.service';
 import { Component, OnInit  } from '@angular/core';
-import { LoadingController, PopoverController, AlertController } from '@ionic/angular';
+import { LoadingController, PopoverController, AlertController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 
@@ -19,8 +19,11 @@ loading: boolean;
   constructor(public loadingController: LoadingController,
               private fb: FormBuilder,
               public alertController: AlertController,
+              public toastController: ToastController,
               private router: Router, private userService: UserService) { 
-            
+                if(userService.networkDisconnet){
+                  this.presentFailNetwork();
+              }
               }
 
   model = {
@@ -31,13 +34,20 @@ loading: boolean;
   ngOnInit() {
     this.loading = false;
   }
+  async presentFailNetwork() {
+    const toast = await this.toastController.create({
+      message: 'No internet connection!!!',
+      duration: 2000
+    });
+    toast.present();
+  }
 
   async login(form: any) {
     this.loading = true;
     this.userService.login(this.model).subscribe(response => {
       this.userService.setToken(response['token']);
       this.userService.loadBalance();
-      localStorage.setItem('appUsername',response['doc']['username']);
+      localStorage.setItem('appUser',response['doc']['username']);
       this.loading = false;
       this.router.navigate(['/game']);
    

@@ -1,6 +1,8 @@
+import { AccountService } from './../../shared/account.service';
 import { UserService } from './../../shared/user.service';
-import { Router } from '@angular/router';
+import { Router, NavigationEnd } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { MenuController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-account',
@@ -13,23 +15,43 @@ export class AccountComponent implements OnInit {
   appUsername: any;
   amountInput: any;
   exactAmount: any;
-  balance: any;
 
-  constructor(private router: Router, public userService: UserService) { }
+
+  constructor(private router: Router, public userService: UserService,
+              public accountService: AccountService,
+              public toastController: ToastController,
+              public menu: MenuController) {
+                if(this.userService.networkDisconnet){
+                  this.presentFailNetwork();
+                }
+               }
 
 
 
   ngOnInit() {
     this.getBalance();
+    console.log('init accouont fires');
     this.generateRef();
-    this.appUsername = localStorage.getItem('appUsername');
+    this.appUsername = localStorage.getItem('appUser');
+  }
 
+  async presentFailNetwork() {
+    const toast = await this.toastController.create({
+      message: 'No internet connection!!!',
+    });
+    toast.present();
+  }
+ 
+  openMenu(){
+    this.menu.open();
   }
 
   profileSection(){
     this.router.navigate(['/profile']);
   }
   paymentCancel(){
+    this.amountInput = '';
+    this.exactAmount = '';
     this.generateRef();
     // this.amountInput = null;
   }
@@ -41,15 +63,23 @@ export class AccountComponent implements OnInit {
    process.username = this.appUsername;
    process.amount = this.exactAmount;
    console.log(this.appUsername);
-   this.generateRef();
+ 
    this.userService.postTransaction(process).subscribe(
      res => {
-       this.getBalance();
-   this.amountInput = null;
+      this.amountInput = '';
+      this.exactAmount = '';
+      console.log( 'SUCCESS');
+      //  console.log(res, 'LOAD SUPPOSE');
+      this.accountService.loadMyBalance();
+       
+      this.generateRef();
      },
      err => {
-   this.amountInput = null;
-   console.log(err);
+      this.amountInput = '';
+      this.exactAmount = '';
+      this.generateRef();
+      this.amountInput = null;
+      this.accountService.loadMyBalance();
      }
    );
   
@@ -66,8 +96,6 @@ export class AccountComponent implements OnInit {
   }
 
   getBalance(){
-    this.userService.loadBalance().subscribe(
-      res => { this.balance = res['balance']}
-    );
+  this.accountService.loadMyBalance();
   }
 }

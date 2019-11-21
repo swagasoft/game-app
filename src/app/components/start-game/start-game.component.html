@@ -17,7 +17,7 @@
   <div class="ion-page" main>
     <ion-header>
       <ion-toolbar>
-        <ion-buttons slot="start" class="p-1">
+        <ion-buttons (click)="menu.open()" slot="start" class="p-1">
           <ion-menu-button color="success"></ion-menu-button>
         </ion-buttons>
         <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
@@ -88,11 +88,11 @@
       </div>
 
       <!-- game over indicator.... -->
-      <ion-card *ngIf="gameOver" class="text-center">
+      <ion-card *ngIf="gameOver" class="text-center mt-5">
           <ion-card-title class="green darken-4 text-white"> FINISHED </ion-card-title>   
           <ion-item-divider>
             <ion-segment> <ion-card-header class="font-weight-bold"> time - 4:00</ion-card-header></ion-segment>
-            <ion-segment><ion-card-header  class="font-weight-bold"> enlapse  {{GameTimeMinute}} : {{GameTimeSeconds}} </ion-card-header></ion-segment>
+            <ion-segment><ion-card-header  class="font-weight-bold"> Enlapsed  {{GameTimeMinute}} : {{GameTimeSeconds}} </ion-card-header></ion-segment>
           </ion-item-divider>
           <ion-card-content>
            <ion-item-divider>
@@ -101,7 +101,7 @@
              </ion-segment>
              <ion-segment> <h6  class="font-weight-bold"> wrong :{{wrongAns}} </h6></ion-segment>
            </ion-item-divider>
-             <a [routerLink]="['/game']" class="btn btn-dark"> RETURN</a>
+           
           </ion-card-content>
         </ion-card>
 
@@ -115,26 +115,30 @@
       </ion-item-divider>
       
 
-         <ion-slides  class="swiper-container" *ngIf="!loadingGame" pager="true" >
-          <ion-slide class="m-0 p-0"  *ngFor="let item of gameQuestions; let i = index ">
-            <ion-card class="m-0"  >
+         <ion-slides  #mySlider  class="swiper-container" *ngIf="!loadingGame" pager="true" >
+          <ion-slide  class="m-0 p-0"  *ngFor="let item of gameQuestions; let i = index ">
+            <ion-card class="m-0" style="width: 100%;" >
            <div class="justify-content-right d-flex ml-2 ">
                       <h3 class="" id="count">{{i + 1}} </h3>  <!-- Default Segment -->
            
            </div>
             
-            <ion-card-title><p>{{item.question}} </p></ion-card-title>
+            <ion-card-title><p class="m-4">{{item.question}} </p></ion-card-title>
             <ion-card-content class="text-left mb-5">
            
-                <ion-button  expand="full" color="secondary" (click)="userSelect(item.option1, item.answer)"> A : {{item.option1}} </ion-button>
+                <ion-button  expand="full" color="secondary"  [disabled]="clickedDisable"
+                 (click)="userSelect(item.option1, item.answer);"> A : {{item.option1}} </ion-button>
               
-                  <ion-button  expand="full" color="secondary" (click)="userSelect(item.option2, item.answer)"> B : {{item.option2}} </ion-button>
+                  <ion-button  expand="full" color="secondary"  [disabled]="clickedDisable"
+                   (click)="userSelect(item.option2, item.answer); "> B : {{item.option2}} </ion-button>
               
             
-                  <ion-button  expand="full" color="secondary" (click)="userSelect(item.option3, item.answer)"> C : {{item.option3}} </ion-button>
+                  <ion-button  expand="full" color="secondary"  [disabled]="clickedDisable"
+                  (click)="userSelect(item.option3, item.answer); "> C : {{item.option3}} </ion-button>
               
                
-                  <ion-button  expand="full" color="secondary" (click)="userSelect(item.option4, item.answer)"> D : {{item.option4}} </ion-button>
+                  <ion-button  expand="full" color="secondary"  [disabled]="clickedDisable"
+                   (click)="userSelect(item.option4, item.answer); "> D : {{item.option4}} </ion-button>
               
                       <div class=" mt-3 d-flex justify-content-center row">
                          <ion-chip color="secondary"> <ion-icon  class="mr-5" name="arrow-dropleft">
@@ -145,10 +149,9 @@
                       </div>
 
             </ion-card-content>
-            </ion-card>  
+            </ion-card>
             </ion-slide>
-             <!-- If we need navigation buttons -->
-   
+           
          
         </ion-slides>
 
@@ -166,4 +169,6 @@
     document.querySelector('ion-menu-controller')
       .open();
   }
+
+
 </script>

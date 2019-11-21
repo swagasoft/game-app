@@ -1,7 +1,9 @@
 <ion-menu side="start">
     <ion-header>
       <ion-toolbar translucent class="pt-1">
-        <ion-title>{{appUsername}} </ion-title>
+        <ion-title>{{accountService.appUser}} </ion-title> <br>
+        <h6> ₦ {{accountService.accountBalance | number}} </h6>
+
 
         <ion-thumbnail slot="start">
           </ion-thumbnail>
@@ -17,23 +19,29 @@
   <div class="ion-page" main>
     <ion-header>
       <ion-toolbar>
-        <ion-buttons slot="start" class="p-1">
+        <ion-buttons (click)="openMenu()" slot="start" class="p-1">
           <ion-menu-button color="success"></ion-menu-button>
         </ion-buttons>
-        <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
+        <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.PNG"></ion-img>
       </ion-toolbar>
     </ion-header>
     <ion-content class="content ion-padding m-0">
+       <!-- fab placed to the top end -->
+  <ion-fab vertical="top" horizontal="end" slot="fixed">
+      <ion-fab-button   color="light">
+        <ion-icon [routerLink]="['/game']"  name="logo-game-controller-b"></ion-icon>
+      </ion-fab-button>
+    </ion-fab>
       <!-- content area -->
          <div>
              <ion-card class="text-center">
                  <ion-card-header class="font-weight-bold text-white grey darken-2"> PAYMENT</ion-card-header>
                  <ion-card-content>
                      <div class="col p-5 d-flex justify-content-center">
-                     <ion-img class="wallet" src="../../../assets/icon/wallet_icon.png"></ion-img>
+                     <ion-img class="wallet" src="assets/icon/wallet_icon.png"></ion-img>
                      </div>
                      <h1 class="text-center fint-weight-bold"> CREDIT : ₦  
-                       {{balance| number}} </h1>
+                       {{accountService.accountBalance | number}} </h1>
                      <!-- <ion-button color="success">DEBIT CARD</ion-button> -->
                       <ion-item class="text-left">
                         <ion-label position="floating">enter amount here</ion-label>
@@ -63,7 +71,7 @@
                  <ion-card-header class="font-weight-bold text-white grey darken-2"> ACCOUNT</ion-card-header>
                  <ion-card-content>
                      <div class="col p-5 d-flex justify-content-center">
-                     <ion-img class="wallet" src="../../../assets/icon/profile_icon.png"></ion-img>
+                     <ion-img class="wallet" src="assets/icon/profile_icon.png"></ion-img>
                      </div>
                      <h1 class="text-center fint-weight-bold"> UPDATE YOUR INFORMATION</h1>
                      <ion-button color="success" (click)="profileSection()" >UPDATE</ion-button>

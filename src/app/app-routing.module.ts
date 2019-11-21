@@ -1,3 +1,4 @@
+import { RecordComponent } from './components/record/record.component';
 import { StartGameComponent } from './components/start-game/start-game.component';
 import { PrivacyComponent } from './components/privacy/privacy.component';
 import { FaqComponent } from './components/faq/faq.component';
@@ -21,8 +22,7 @@ import { PreloadAllModules, RouterModule, Routes, CanActivate } from '@angular/r
 import { ManageQuestionsComponent } from './components/manage-questions/manage-questions.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
-  { path: 'home', loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)},
+  {path: '', component: GameComponent},
   {path : 'login', component: LoginComponent},
   {path : 'welcome', component: WelcomepageComponent, canActivate:[AuthguardGuard]},
   {path : 'register', component: RegisterComponent},
@@ -33,6 +33,7 @@ const routes: Routes = [
   {path : 'profile', component: ProfileComponent, canActivate:[AuthguardGuard]},
   {path : 'account', component: AccountComponent, canActivate:[AuthguardGuard]},
   {path : 'start-game', component: StartGameComponent, canActivate:[AuthguardGuard]},
+  {path : 'game-record', component: RecordComponent, canActivate:[AuthguardGuard]},
 
   {path : 'contact-us', component: ContactComponent},
   {path : 'how-it-works', component: HowItWorksComponent},
@@ -48,9 +49,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [ RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

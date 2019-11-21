@@ -1,18 +1,22 @@
 import { Injectable } from '@angular/core';
+import { Network } from '@ionic-native/network/ngx';
+declare var NetworkInterface: any;
 
 @Injectable({
   providedIn: 'root'
 })
 export class GameServiceService {
   gameOver: boolean;
-  public gameLive: boolean;
+  public gameLive: boolean = false;
   public timeDays: any;
   public timeHours: any;
   public timeMinute: any;
   public timeSeconds: any;
+
   
   
-  constructor() { }
+  // tslint:disable-next-line: no-unused-expression
+  constructor(private network: Network) { }
 
 
    // timer
@@ -37,8 +41,11 @@ export class GameServiceService {
    
           }
     }, 1000);
-    
       }
+
+      
 }
+
+
 
 

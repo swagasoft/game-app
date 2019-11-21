@@ -1,29 +1,33 @@
 
-        <ion-item [routerLink]="['/welcome']" routerLinkActive="router-link-active" >
+        <ion-item (click)="gotoWelcome()"  >
           <ion-icon name="home" slot="start"></ion-icon>
           <ion-label >HOME</ion-label>
         </ion-item>
-        <ion-item [routerLink]="['/leaderboard']" routerLinkActive="router-link-active" >
+        <ion-item (click)="goleaderboard()">
           <ion-icon name="trophy" slot="start"></ion-icon>
           <ion-label>LEADERBOARD</ion-label>
         </ion-item>
-        <ion-item [routerLink]="['/profile']" routerLinkActive="router-link-active" >
+        <ion-item (click)="gotoProfile()"  >
           <ion-icon name="person" slot="start"></ion-icon>
           <ion-label>PROFILE</ion-label>
         </ion-item>
-        <ion-item [routerLink]="['/game']" routerLinkActive="router-link-active" >
+        <ion-item (click)="gotoGame()" >
           <ion-icon name="logo-game-controller-b" slot="start"></ion-icon> 
           <ion-label class="label">GAME</ion-label>
         </ion-item>
-        <ion-item [routerLink]="['/account']" routerLinkActive="router-link-active" >
+        <ion-item (click)="gotoGameRecord()"  >
+          <ion-icon name="list-box" slot="start"></ion-icon> 
+          <ion-label class="label">GAME RECORD</ion-label>
+        </ion-item>
+        <ion-item (click)="gotoAccount()" >
           <ion-icon name="apps" slot="start"></ion-icon>
           <ion-label>ACCOUNT</ion-label>
         </ion-item>    
-        <ion-item [routerLink]="['/settings']" routerLinkActive="router-link-active" >
+        <ion-item (click)="gotoSettings()" >
           <ion-icon name="settings" slot="start"></ion-icon>
           <ion-label>SETTINGS</ion-label>
         </ion-item>
-        <ion-item [routerLink]="['/admin-upload']" routerLinkActive="router-link-active" >
+        <ion-item (click)="gotoAdmin()" >
           <ion-icon name="settings" slot="start"></ion-icon>
           <ion-label>ADMIN</ion-label>
         </ion-item>

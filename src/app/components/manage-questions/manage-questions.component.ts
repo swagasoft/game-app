@@ -2,7 +2,7 @@ import { UserService } from './../../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
-import { AlertController } from '@ionic/angular';
+import { AlertController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-manage-questions',
@@ -18,7 +18,9 @@ showContent: boolean;
 questionToEdit: any;
 
 
-  constructor(private userService: UserService,public alertController: AlertController,
+  constructor(private userService: UserService,
+    public menu: MenuController,
+    public alertController: AlertController,
               private router: Router) { }
 
   questionModel = {

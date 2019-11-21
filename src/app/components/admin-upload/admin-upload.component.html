@@ -17,7 +17,7 @@
 <div class="ion-page" main>
   <ion-header>
     <ion-toolbar>
-      <ion-buttons slot="start" class="p-1">
+      <ion-buttons (click)="menu.open()" slot="start" class="p-1">
         <ion-menu-button color="success"></ion-menu-button>
       </ion-buttons>
       <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
@@ -31,7 +31,7 @@
    <ion-card>
      <!-- select category -->
      <ion-item>
-      <ion-label>Caegories</ion-label>
+      <ion-label>Caegories</ion-label> 
       <ion-select  (ngModelChange)="selectChange($event)"  [(ngModel)]="model.mlistOptions">
         <ion-select-option value="economics">Economics</ion-select-option>
         <ion-select-option value="sport">Sport</ion-select-option>

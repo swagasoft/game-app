@@ -1,7 +1,7 @@
 import { UserService } from './../../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { AlertController, ToastController } from '@ionic/angular';
+import { AlertController, ToastController, MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-admin-upload',
@@ -14,6 +14,7 @@ export class AdminUploadComponent implements OnInit {
 
   
   constructor(private userService: UserService,
+              public menu: MenuController,
               public toastController: ToastController,
               public alertController: AlertController) { }
 

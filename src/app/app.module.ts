@@ -1,3 +1,5 @@
+import { AccountService } from './shared/account.service';
+import { RecordComponent } from './components/record/record.component';
 import { GameServiceService } from './shared/game-service.service';
 import { StartGameComponent } from './components/start-game/start-game.component';
 import { ContactComponent } from './components/contact/contact.component';
@@ -31,6 +33,7 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Network } from '@ionic-native/network/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -57,6 +60,7 @@ import { ManageQuestionsComponent } from './components/manage-questions/manage-q
   ManageQuestionsComponent,
   AdminAccountComponent,
   FooterComponent,
+  RecordComponent,
   ContactComponent,
   StartGameComponent,
   PrivacyComponent,
@@ -79,12 +83,13 @@ import { ManageQuestionsComponent } from './components/manage-questions/manage-q
   providers: [{provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true},
     StatusBar,
     UserService,
+    Network,
     NativeAudio,
     Angular4PaystackModule,
     SplashScreen,
     AuthguardGuard,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    UserService, AuthguardGuard, GameServiceService
+    UserService,AccountService, AuthguardGuard, GameServiceService
   ],
   bootstrap: [AppComponent]
 })

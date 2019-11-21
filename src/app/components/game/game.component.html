@@ -1,7 +1,8 @@
 <ion-menu side="start">
         <ion-header>
           <ion-toolbar translucent class="pt-1">
-            
+            <ion-title>{{accountService.appUser}} </ion-title> <br>
+        <h6> ₦ {{accountService.accountBalance | number}} </h6>
             <ion-thumbnail slot="start">
               </ion-thumbnail>
           </ion-toolbar>
@@ -12,20 +13,22 @@
           </ion-list>
         </ion-content>
       </ion-menu>
-    
+      
       <div class="ion-page" main>
         <ion-header>
           <ion-toolbar>
-            <ion-buttons slot="start" class="p-1">
+            <ion-buttons  (click)="openMenu()" slot="start" class="p-1">
               <ion-menu-button color="success"></ion-menu-button>
             </ion-buttons>
             <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
           </ion-toolbar>
         </ion-header>
         <ion-content class="">
+
+            <!-- fab placed to the (vertical) center and start -->
+ 
           <!-- content area -->
           <div class="content m-0">
-
           <div class="resp-container game-over-section m-0">
               <ion-card class=" d-flex justify-content-center m-0">
                 <div id="clockdiv"> 
@@ -61,7 +64,7 @@
                   
                 </div> 
               </ion-card>
-
+ 
               <ion-card *ngIf="gameService.gameLive" class="d-flex m-0 justify-content-center">
                 <h1 class="text-dark text-center font-weight-bold">LIVE!</h1>
               </ion-card>
@@ -86,11 +89,30 @@
                 </ion-card>
             </div>
 
-            <div class=" game-live" *ngIf="gameService.gameLive">
+            
+
+            <div class=" row mt-4 game-live" *ngIf="gameService.gameLive">
                 <div class="col d-flex justify-content-center affix">
                     <ion-button (click)="startGame()" color="success">START GAME</ion-button>
                 </div>
+                <div class="col d-flex justify-content-center affix">
+                  <ion-button (click)="goToRecoreds()" color="success" >MY RECORD(S)</ion-button>
+                </div>
             </div>
+            
+            <div *ngIf="low_balance"  class=" ">
+              <div class="toast-container mb-5">
+                <ion-chip>
+                  <!-- <ion-icon name="hand" color="danger"></ion-icon> -->
+                  <ion-label class="font-weight-bold text-danger"> YOUR ACCOUNT IS LOW! CLICK HERE  </ion-label> <br>
+                  <ion-icon (click)="makePayment()" size="large" name="wallet" color="success"></ion-icon>
+                </ion-chip>
+              </div>
+            </div>
+
+            <h6 *ngIf="userService.networkDisconnet" class="text-danger"> CONNECTION LOST!</h6>
+            <!-- <button (click)="loadBalnce()">load balance</button>
+            <h1> {{accountService.accountBalance | number}} </h1> -->
           </div>
           <!-- end content area -->
         </ion-content>

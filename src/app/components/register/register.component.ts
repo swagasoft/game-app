@@ -1,7 +1,7 @@
 import { UserService } from './../../shared/user.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AlertController } from '@ionic/angular';
+import { AlertController, ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-register',
@@ -15,7 +15,12 @@ export class RegisterComponent implements OnInit {
 
   constructor(private userService: UserService,
               public alertController: AlertController,
-              private router: Router) { }
+              public toastController: ToastController,
+              private router: Router) {
+                if(this.userService.networkDisconnet){
+                  this.presentFailNetwork();
+              }
+               }
   model = {
     number: '',
     password: '',
@@ -59,6 +64,15 @@ export class RegisterComponent implements OnInit {
 
     await alert.present();
   }
+
+  async presentFailNetwork() {
+    const toast = await this.toastController.create({
+      message: 'No internet connection!!!',
+      duration: 2000
+    });
+    toast.present();
+  }
+
   async presentSuccess() {
     const alert = await this.alertController.create({
       header: 'SUCCESS!',

@@ -1,7 +1,8 @@
 <ion-menu side="start">
         <ion-header>
           <ion-toolbar translucent class="pt-1">
-            <ion-title>Menu</ion-title>
+            <ion-title>{{accountService.appUser}} </ion-title> <br>
+        <h6> ₦ {{accountService.accountBalance | number}} </h6>
     
             <ion-thumbnail slot="start">
               </ion-thumbnail>
@@ -17,32 +18,103 @@
       <div class="ion-page" main>
         <ion-header>
           <ion-toolbar>
-            <ion-buttons slot="start" class="p-1">
+            <ion-buttons (click)="menu.open()" slot="start" class="p-1">
               <ion-menu-button color="success"></ion-menu-button>
             </ion-buttons>
             <ion-img class="rounded-top"  src="../../../assets/icon/Logoicon.png"></ion-img>
           </ion-toolbar>
         </ion-header>
-        <ion-content class="content ion-padding m-0">
+        <ion-content class=" ion-padding m-0 p-0">
           <!-- content area -->
-            <ion-card class="">
-                <ion-card-header>UPDATE ACCOUNT</ion-card-header>
+            <ion-card class="content m-0 p-0">
+                <ion-card-header>UPDATE ACCOUNT</ion-card-header> 
                 <ion-card-content>
-                    <form action="">
-                        <ion-label  position="floating">fullname</ion-label>
-                        <ion-input  type="text"  #fullname name="fullname" clearInput [(ngModel)]="model.fullname"
-                        required="true"></ion-input>
-                        
-                        <ion-label  position="floating">nationality</ion-label>
-                        <ion-input  type="text"  #nationality name="nationality"
-                         clearInput [(ngModel)]="model.nationality"
-                        required="true"></ion-input>
 
-                        <ion-label  position="floating">nationality</ion-label>
-                        <ion-input  type="text"  #bank name="bank"
-                         clearInput [(ngModel)]="model.bank"
-                        required="true"></ion-input>
-                    </form>
+                   <!-- fab placed to the top end -->
+          <ion-fab vertical="top" horizontal="end" slot="fixed">
+              <ion-fab-button   color="light">
+                <ion-icon [routerLink]="['/game']"  name="logo-game-controller-b"></ion-icon>
+              </ion-fab-button>
+            </ion-fab>
+              
+                      <!-- loader -->
+    <div *ngIf="loading" class=" loader d-flex justify-content-center row">
+      <div class="lds-ring "><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+  </div>
+
+
+
+  <form #profileForm ngform="profileForm" name="form" (submit)="createProfile(profileForm)" class="text-center" >
+    <ion-item>
+        <ion-label position="floating">Fullname</ion-label>
+      <ion-input #fullname name="fullname" position="floating"  [(ngModel)]="model.fullname"
+       type="text" required ></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label position="floating">Email</ion-label>
+      <ion-input #email name="email" position="floating"  [(ngModel)]="model.email"
+       type="email" required  [pattern]="emailRegex"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-item>
+        <ion-label>Nationality</ion-label>
+        <ion-select #selectCountry name="selectCountry" interface="popover"  (ngModelChange)="selectChange($event)" 
+         [(ngModel)]="setNationality.selectedOption" name="nationality" #nationality>
+          <ion-select-option value="Afghanistan">	Afghanistan  </ion-select-option>
+          <ion-select-option value="Aland Islands">		Aland Islands  </ion-select-option>
+          <ion-select-option value="Albania">		Albania  </ion-select-option>
+          <ion-select-option value="Algeria">			Algeria  </ion-select-option>
+          <ion-select-option value="American Samoa">	American Samoa </ion-select-option>
+          <ion-select-option value="Andorra"> Andorra </ion-select-option>
+          <ion-select-option value="Angola"> Angola </ion-select-option>
+          <ion-select-option value="Anguilla"> Anguilla</ion-select-option>
+          <ion-select-option value="Antarctica">Antarctica</ion-select-option>
+          <ion-select-option value="Antigua and Barbuda">Antigua and Barbuda</ion-select-option>
+          <ion-select-option value="Argentina">Argentina</ion-select-option>
+          <ion-select-option value="Armenia">Armenia</ion-select-option>
+          <ion-select-option value="Aruba">Aruba</ion-select-option>
+          <ion-select-option value="Australia">Australia</ion-select-option>
+          <ion-select-option value="Austria">Austria</ion-select-option>
+          <ion-select-option value="Azerbaijan">Azerbaijan</ion-select-option>
+          <ion-select-option value="Bahamas">Bahamas</ion-select-option>
+          <ion-select-option value="Bahrain">Bahrain</ion-select-option>
+          <ion-select-option value="Bangladesh">Bangladesh</ion-select-option>
+          <ion-select-option value="Barbados">Barbados</ion-select-option>
+          <ion-select-option value="Belarus">Belarus</ion-select-option>
+          <ion-select-option value="Belgium">Belgium</ion-select-option>
+          <ion-select-option value="Belize">Belize</ion-select-option>
+          <ion-select-option value="Benin">Benin</ion-select-option>
+          <ion-select-option value="Bermuda">Bermuda</ion-select-option>
+        
+        </ion-select>
+      </ion-item>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Bank</ion-label>
+      <ion-input #bank name="bank" position="floating" [(ngModel)]="model.bank"
+       type="text" required  ></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Bank Acount number</ion-label>
+      <ion-input #bank_number name="bank_number" position="floating" [(ngModel)]="model.accountNumber"
+       type="number" required  ></ion-input>
+    </ion-item>
+
+    <ion-item>
+        <ion-label position="floating">Bank Acount name</ion-label>
+      <ion-input #bank_acount_name name="bank_acount_number" position="floating" [(ngModel)]="model.accountName"
+       type="text" required  ></ion-input>
+    </ion-item>
+   
+<ion-button expand="full" type="submit" [disabled]="!bank.value || setNationality.selectedOption.length == 0
+|| !fullname.value || !bank_number.value "
+ class="text-white" color="success" >Submit</ion-button>      
+  </form>
+
+
                 </ion-card-content>
             </ion-card>
          <!-- end content area -->
